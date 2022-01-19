@@ -1,0 +1,73 @@
+<div class="container-md px-5 py-3 border border-4">
+  <div class="row">
+    <div class="col-sm-10">
+      <p class="h2 text-center">進貨</p>
+    </div>
+    <div class="col-sm-2">
+      <a href="/">
+        <button class="btn btn-secondary">返回</button></a>
+    </div>
+  </div>
+  <div class="row d-flex border border-2 rounded">
+    <div class="col-sm-4 d-flex">
+      <table class="table table-light table-striped table-hover text-center">
+        <thead>
+          <tr>
+            <th>檳榔品名</th>
+            <th>進貨量</th>       
+          </tr>
+        </thead>
+        <tbody id="data-panel-nut">
+       <!-- display data here -->
+          <tr>
+            <td>紅葉</td>
+            <td><input type="text"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4 d-flex">
+      <table class="table table-light table-striped table-hover text-center">
+        <thead>
+          <tr>
+            <th>香菸品名</th>
+            <th>進貨量</th>          
+          </tr>
+        </thead>
+         <tbody id="data-panel-smoke">
+          <!-- display data here -->
+          <tr>
+            <td>紅葉</td>
+            <td><input type="text"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4 d-flex">
+      <table class="table table-light table-striped table-hover text-center">
+        <thead>
+          <tr>
+            <th>飲料品名</th>
+            <th>進貨量</th>          
+          </tr>
+        </thead>
+         <tbody id="data-panel-drink">
+          <!-- display data here -->
+          <tr>
+            <td>紅葉</td>
+            <td><input type="text"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      
+      
+      <div class="row d-flex ">
+        <button class="btn btn-warning">進貨確認</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../js/purchase.js"></script>

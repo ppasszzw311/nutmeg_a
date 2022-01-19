@@ -1,0 +1,102 @@
+<div class="row px-2 py-2">
+  <div class="col-sm-2">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="h5 nav-link disabled" tabindex="-1" aria-disable="true">老闆管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">庫存管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="saleRank">業績查詢與商品排行</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="monlyReport">月報表</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="itemData">商品資料編輯</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="errorfix">錯誤班表修正</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="record">交班紀錄查詢</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">回使用者頁面</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-10 px-3 py-2">
+    <div class="row">
+      <p class="h4 text-body">庫存查詢</p>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <form action="get" class="search-bar d-flex justify-content-center align-items-center">
+        <div class="col-6 px-3">
+          <label for="selectstore" class="form-label">選擇分店</label>
+          <select class="form-select" name="store" id="store" aria-label="select example1">
+            <option selected>選擇分店</option>
+            <option value="1">大安</option>
+            <option value="2">信義</option>
+            <option value="3">永和</option>
+          </select>
+        </div>
+        <div class="col-6 px-3">
+          <label for="selectstore" class="form-label">選擇商品類別</label>
+          <select class="form-select" name="store" id="store" aria-label="select example1">
+            <option selected>選擇類別</option>
+            <option value="1">檳榔</option>
+            <option value="2">香菸</option>
+            <option value="3">飲料</option>
+          </select>
+        </div>
+
+      </form>
+    </div>
+    <div class="row">
+      <table class="table table-light table-stript table-hover text-center">
+        <thead>
+          <tr>
+            <th>編號</th>
+            <th>類別</th>
+            <th>商品</th>
+            <th>庫存量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>檳榔</td>
+            <td>紅心</td>
+            <td>33</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>檳榔</td>
+            <td>紅心</td>
+            <td>33</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>檳榔</td>
+            <td>紅心</td>
+            <td>33</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>檳榔</td>
+            <td>紅心</td>
+            <td>33</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>檳榔</td>
+            <td>紅心</td>
+            <td>33</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

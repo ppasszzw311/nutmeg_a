@@ -1,0 +1,55 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ebeee8;
+  font-family: "MicroSoft Jhenghei", sans-serif;
+}
+
+.container-md {
+  background-color: rgba(255, 253, 245, 0.8);
+  min-height: 96vh;
+}
+
+
+[data-checkin="quit"],
+[data-checkin="submit"] {
+  height: 80px;
+  width: 160px;
+  font-size: 3em;
+}
+
+#aassd {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+#aassd label {
+  margin-left: 30px;
+  width: 90px;
+  font-size: 1.1em;
+}
+#aassd select {
+  width: 10em;
+}
+
+#datetime {
+  color: red;
+}
+
+#menu {
+  min-height: 500px;
+}
+
+#number10 {
+  padding: 1em;
+}
+
+#number10 button {
+  height: 3em;
+  width: 30%;
+  margin: 1%;
+  font-size: 24px;
+}

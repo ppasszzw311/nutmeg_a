@@ -1,0 +1,46 @@
+<div class="container-md px-5 py-3 border border-4">
+  <h3 class="d-flex justify-content-center align-items-center">打卡查詢</h3>
+  <div class="row">
+    <div class="col-sm-4 d-flex justify-content-start align-items-center">
+      <p class="fs-5">查詢時</p>
+      <select name="sel_time" id="sel_name" class="form-select" aria-label="Defult select example">
+        <option selected>請選擇時間</option>
+        <option value="早班">早班</option>
+        <option value="中班">中班</option>
+        <option value="晚班">晚班</option>
+      </select>
+    </div>
+    <div class="col-sm-7 d-flex justify-content-start align-items-center">
+      <p class="fs-5">查詢日</p>
+      <input type="date" class="form-control" id="startDate">
+      <span> ~ </span>
+      <input type="date" class="form-control" id="endDate">
+    </div>
+    <div class="col-sm-1 d-flex justify-content-center align-items-center">
+      <a href="/" class="">
+        <button class="btn btn-secondary">返回</button>
+      </a>
+    </div>
+
+  </div>
+  <div class="border border-2 rounded">
+    <table class="table table-light table-striped table-hover">
+      <thead>
+        <tr>
+          <th>店號</th>
+          <th>店名</th>
+          <th>打卡日期</th>
+          <th>打卡時間</th>
+          <th>班別</th>
+          <th>姓名</th>
+        </tr>
+      </thead>
+      <tbody id="data-panel">
+        <!-- display data here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../js/checkinList.js"></script>

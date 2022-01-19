@@ -1,0 +1,102 @@
+<div class="row px-2 py-2">
+  <div class="col-sm-2">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="h5 nav-link disabled" tabindex="-1" aria-disable="true">老闆管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="manager">庫存管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="saleRank">業績查詢與商品排行</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">月報表</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="itemData">商品資料編輯</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="errorfix">錯誤班表修正</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="record">交班紀錄查詢</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">回使用者頁面</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-10">
+    <h3 class="d-flex justify-content-center align-items-center">交班紀錄查詢</h3>
+    <div class="row">
+      <div class="col-sm-3 d-flex justify-content-start align-items-center">
+        <p class="fs-5">分店</p>
+        <select name="sel_time" id="sel_name" class="form-select" aria-label="Defult select example">
+          <option selected>請選擇分店</option>
+          <option value="1">大安</option>
+          <option value="2">信義</option>
+          <option value="3">中和</option>
+        </select>
+      </div>
+      <div class="col-sm-3 d-flex justify-content-start align-items-center">
+        <p class="fs-5">班別</p>
+        <select name="sel_time" id="sel_name" class="form-select" aria-label="Defult select example">
+          <option selected>請選擇班別</option>
+          <option value="1">早班</option>
+          <option value="2">中班</option>
+          <option value="3">晚班</option>
+        </select>
+      </div>
+      <div class="col-sm-5 d-flex justify-content-start align-items-center">
+        <p class="fs-5">查詢時間</p>
+        <input type="date" class="form-control">
+      </div>
+      <div class="col-sm-1 d-flex justify-content-center align-items-center">
+        <a href="/" class="">
+          <button class="btn btn-secondary">返回</button>
+        </a>
+      </div>
+
+    </div>
+    <div class="border border-2 rounded">
+      <table class="table table-light table-striped table-hover">
+        <thead>
+          <tr>
+            <th>店名</th>
+            <th>班別</th>
+            <th>交班人員</th>
+            <th>總銷金額</th>
+            <th>交班金額</th>
+            <th>短溢金額</th>
+            <th>代收包裹</th>
+            <th>其他支出</th>
+            <th>香菸銷售金額</th>
+            <th>飲料銷售金額</th>
+            <th>檳榔銷售金額</th>
+            <th>上班時間</th>
+            <th>下班時間</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

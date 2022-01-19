@@ -1,0 +1,188 @@
+<div class="row px-2 py-2">
+  <div class="col-sm-2">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="h5 nav-link disabled" tabindex="-1" aria-disable="true">老闆管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="manager">庫存管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="saleRank">業績查詢與商品排行</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="monlyReport">月報表</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="itemData">商品資料編輯</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">錯誤班表修正</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="record">交班紀錄查詢</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">回使用者頁面</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-10">
+    <p class="h3">錯誤班表修正</p>
+    <div class="row d-flex justify-content-start">
+      <div class="col-sm-4 d-flex">
+        <p class="h6 col-sm-2">分店</p>
+        <select class="form-select" name="store" id="store" aria-label="select example1">
+          <option selected>選擇分店</option>
+          <option value="1">大安</option>
+          <option value="2">信義</option>
+          <option value="3">永和</option>
+        </select>
+      </div>
+      <div class="col-sm-4 d-flex">
+        <p class="h6 col-sm-2">日期</p>
+        <select class="form-select" name="store" id="store" aria-label="select example1">
+          <option selected>選擇分店</option>
+          <option value="1">大安</option>
+          <option value="2">信義</option>
+          <option value="3">永和</option>
+        </select>
+      </div>
+      <div class="col-sm-4 d-flex">
+        <p class="h6 col-sm-2">班別</p>
+        <select class="form-select" name="store" id="store" aria-label="select example1">
+          <option selected>選擇分店</option>
+          <option value="1">大安</option>
+          <option value="2">信義</option>
+          <option value="3">永和</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row">
+        <div class="col-sm-10">
+          <div class="row border border-2">
+            <p class="h3">檳榔</p>
+            <table class="table table-light table-stript table-hover">
+              <thead>
+                <tr>
+                  <th>名稱</th>
+                  <th>進貨</th>
+                  <th>上班量</th>
+                  <th>工作包數</th>
+                  <th>工作顆數</th>
+                  <th>贈送</th>
+                  <th>退貨</th>
+                  <th>退貨</th>
+                  <th>下班量</th>
+                  <th>售量</th>
+                  <th>金額</th>
+                </tr>
+              </thead>
+              <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 border border-2">
+              <p class="h3">香菸</p>
+              <table class="table table-light table-stript table-hover">
+                <thead>
+                  <tr>
+                    <th>名稱</th>
+                    <th>進貨</th>
+                    <th>上班量</th>
+                    <th>條</th>
+                    <th>包</th>
+                    <th>下班量</th>
+                    <th>金額</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-sm-6 border border-2">
+              <p class="h3">飲料</p>
+              <table class="table table-light table-stript table-hover">
+                <thead>
+                  <tr>
+                    <th>名稱</th>
+                    <th>進貨</th>
+                    <th>上班量</th>
+                    <th>條</th>
+                    <th>包</th>
+                    <th>下班量</th>
+                    <th>金額</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2 border border-2">
+          <a href="../index.html">
+            <button class="btn btn-secondary">關閉</button>
+          </a>
+          <p class="h6">總金額：<span>7,746</span></p>
+          <p class="h6">檳榔：<span>7,746</span></p>
+          <p class="h6">香菸：<span>7,746</span></p>
+          <p class="h6">飲料：<span>7,746</span></p>
+          <p class="h4 text-center">交班金額</p>
+          <div class="input-group sm-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Amount(to the nearest doollar)">
+            <div class="input-group-append">
+              <span class="input-group-text">元</span>
+            </div>
+          </div>
+          <p class="h4 text-center">短溢金額</p>
+          <div class="input-group sm-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Amount(to the nearest doollar)">
+            <div class="input-group-append">
+              <span class="input-group-text">元</span>
+            </div>
+          </div>
+          <p class="h5 text-center">值班人 <span class="h6">陳明勳</span></p>
+          <p class="h5 text-center">接班人 <span class="h6">陳明勳</span></p>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-success">請確認交班</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

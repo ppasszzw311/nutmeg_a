@@ -1,0 +1,65 @@
+<div class="row d-flex mx-2 my-4">
+  <div class="col-sm-10">
+    <p class="h2">打卡上班</p>
+  </div>
+  <div class="col-sm-2">
+    <a class="#" href="/">
+      <button class="btn btn-secondary">返回</button>
+    </a>
+  </div>
+</div>
+
+<form id="checkin" method="post" action="/api/checkin">
+  <div class="row px-2 py-1">
+    <p class="h3 text-center">值班班別</p>
+    <section class="row mb-4 d-flex">
+      <div class="card col-sm-4 text-center">
+        <label class="card-body px-2">
+          <h5 class="card-title">早班</h5>
+          <input type="radio" name="time" value="早班">
+        </label>
+      </div>
+      <div class="card col-sm-4 text-center">
+        <label class="card-body px-2">
+          <h5 class="card-title">中班</h5>
+          <input type="radio" name="time" value="中班">
+        </label>
+      </div>
+      <div class="card col-sm-4 text-center">
+        <label class="card-body px-2">
+          <h5 class="card-title">晚班</h5>
+          <input type="radio" name="time" value="晚班">
+        </label>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <div class="d-flex justify-content-center" id="check3">
+      <a href="/" type="button" class="btn btn-danger me-3" data-checkin="quit">取消</a>
+      <button type="button" class="btn btn-success me-3" id="loginSubmit" data-bs-toggle="modal"
+        data-bs-target="#exampleModal" data-checkin="submit">送出</button>
+    </div>
+  </div>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">打卡</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="loginmodal">
+        <p>打卡班別：<span id="class"></span></p>
+        <p>打卡時間：<span id="time"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="submitcheck">確認打卡</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/checkin.js"></script>

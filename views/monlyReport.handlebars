@@ -1,0 +1,78 @@
+<div class="row px-2 py-2">
+  <div class="col-sm-2">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="h5 nav-link disabled" tabindex="-1" aria-disable="true">老闆管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="manager">庫存管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="saleRank">業績查詢與商品排行</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">月報表</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="itemData">商品資料編輯</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="errorfix">錯誤班表修正</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="record">交班紀錄查詢</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">回使用者頁面</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-10">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="sm-3">
+          <p class="h4 py-3">結算月報表</p>
+          <div class="row d-flex justify-content-center">
+            <div class="sm-3 d-flex justify-content-center align-items-center">
+              <p class="h5 col-sm-2">查詢時間</p>
+              <div class="col-sm-4">
+                <input type="date" class="form-control" name="datepicker" id="datepicker">
+              </div>
+              <p class="col-sm-1 text-center">年</p>
+              <div class="col-sm-4">
+                <input type="date" class="form-control" name="datepicker" id="datepicker">
+              </div>
+              <p class="text-center">月</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 d-flex align-items-center">
+        <button class="btn btu-light">編輯</button>
+        <button class="btn btn-light">儲存</button>
+      </div>
+    </div>
+    <div class="row">
+      <table class="table table-light table-stript table-hover text-center">
+        <thead>
+          <tr class="table-primary">
+            <th>項目</th>
+            <th>收入</th>
+            <th>支出</th>
+            </>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+<script src="../js/monthReport.js"></script>
