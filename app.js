@@ -68,6 +68,8 @@ app.post('/api/inserWorkShift', api.inserWorkShift)
 app.post('/api/inserWorkShiftDt', api.inserWorkShiftDt)
 app.post('/api/addproduct', api.addProduct)
 app.post('/api/login', api.login)
+app.post('/api/inbound', api.inbound)
+app.post('/api/updateInBoundStock', api.updateInBoundStock)
 
 //get user info
 app.get('/api/userInfo/:token', api.userInfo)
