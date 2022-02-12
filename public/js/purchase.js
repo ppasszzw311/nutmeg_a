@@ -1,3 +1,5 @@
+const { default: axios } = require("axios")
+const { response } = require("express")
 
 
 const nut = document.getElementById("data-panel-nut")
@@ -8,7 +10,6 @@ renderinboundlist()
 function renderinboundlist() {
   const store_id = localStorage.getItem('store_id')
   const category = ['檳榔','香菸','飲料']
-  const list = []
   for ( i = 0; i < 3; i++) {
     let cat = category[i] 
     axios.get(`/api/getProductName/${store_id}/${category[i]}`)
@@ -28,6 +29,53 @@ function renderinboundlist() {
   }
 }
 
+// 檳榔部分
+nut.addEventListener('change', e => {
+  let nut_list = localStorage.getItem('nutlist')
+  nut_list = JSON.parse(nut_list)
+  const changeItem = {
+    id: parseInt(e.target.parentElement.parentElement.getAttribute("data-id")),
+    value: parseInt(e.target.value)
+  }
+  nut_list.filter((item) => {
+    if (item.product_id === changeItem.id ) {
+      item.inbound = changeItem.value
+    }
+  })
+  localStorage.setItem('nutlist', JSON.stringify(nut_list))
+})
+
+//香菸部分
+smoke.addEventListener('change', e => {
+  let smoke_list = localStorage.getItem('smokelist')
+  smoke_list = JSON.parse(smoke_list)
+  const changeItem = {
+    id: parseInt(e.target.parentElement.parentElement.getAttribute("data-id")),
+    value: parseInt(e.target.value)
+  }
+  smoke_list.filter((item) => {
+    if (item.product_id === changeItem.id ) {
+      item.inbound = changeItem.value
+    }
+  })
+  localStorage.setItem('smokelist', JSON.stringify(smoke_list))
+})
+
+// 飲料部分
+drink.addEventListener('change', e => {
+  let drink_list = localStorage.getItem('drinklist')
+  drink_list = JSON.parse(drink_list)
+  const changeItem = {
+    id: parseInt(e.target.parentElement.parentElement.getAttribute("data-id")),
+    value: parseInt(e.target.value)
+  }
+  drink_list.filter((item) => {
+    if (item.product_id === changeItem.id ) {
+      item.inbound = changeItem.value
+    }
+  })
+  localStorage.setItem('drinklist', JSON.stringify(drink_list))
+})
 
 
 function renderList(data) {
@@ -43,3 +91,24 @@ function renderList(data) {
   }
   return list
 }
+
+// inbound // 進貨 // name // 名稱 // product_id // 商品id
+
+function inbound (category, list) {
+  axios.post('/api/inbound', {
+    store_id: parseInt(localStorage.getItem('store_id')),
+    sotre_name: localStorage.getItem('Name'),
+    category: category,
+    product_name: list.name,
+    product_id: list.product_id,
+    inbound_count: list.inbound,
+    inbound_unit: list.inbound_unit,
+    inbound_unit_count: list.inbound_unit_count,
+    shift_id: localStorage.getItem('workshiftId')
+  })
+    .then((response) => {
+      console.log('success inbound')
+    })
+    .catch((err) => console.log(err))
+}
+

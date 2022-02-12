@@ -38,6 +38,7 @@ app.get('/backend/monlyReport', menu.monlyReport)
 app.get('/backend/itemData', menu.itemData)
 app.get('/backend/errorfix', menu.errorfix)
 app.get('/backend/record', menu.record)
+app.get('/testcss', menu.pagetest)
 
 
 // get all 

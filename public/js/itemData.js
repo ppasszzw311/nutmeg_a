@@ -10,6 +10,16 @@ add_new.addEventListener('change', e => {
   let value = e.target.value
   localStorage.setItem(name, value)
 })
+// 點擊更改
+itemList.addEventListener('click', e=> {
+  let target = e.target
+  let value = target.innerHTML
+  if (value.length < 20) {
+    target.innerHTML = `<input class="form-control" type="text" value="${value}">`
+    console.log(value)
+  }
+})
+
 
 addvalue.addEventListener('click', e => {
   e.preventDefault();
@@ -65,15 +75,15 @@ axios.get('/api/product')
       if( data[i].use_yn === 1) {
         check = 'checked'
         let rowdata = `
-          <tr id="${data[i].id}">
-            <td>${data[i].id}</td>
-            <td>${data[i].category}</td>
-            <td>${data[i].name}</td>
-            <td>${data[i].cost}</td>
-            <td>${data[i].price}</td>
-            <td>${data[i].unit}</td>
-            <td>${data[i].unit_count}</td>
-            <td><input class="form-check-input" type="checkbox" ${check} disabled>
+          <tr data-id="${data[i].id}">
+            <td name="id">${data[i].id}</td>
+            <td name="category">${data[i].category}</td>
+            <td name="name">${data[i].name}</td>
+            <td name="cost">${data[i].cost}</td>
+            <td name="price">${data[i].price}</td>
+            <td name="inbount_unit">${data[i].inbound_unit}</td>
+            <td name="inbound_unit_count">${data[i].inbound_unit_count}</td>
+            <td><input class="form-check-input" type="checkbox" ${check} >
                 <label class="form-check-label" for="flexCheckDefault">
                   使用
                 </label>
@@ -84,14 +94,14 @@ axios.get('/api/product')
       } else {
         check = ' '
         let rowdata = `
-          <tr id="${data[i].id}">
-            <td>${data[i].id}</td>
-            <td>${data[i].category}</td>
-            <td>${data[i].name}</td>
-            <td>${data[i].cost}</td>
-            <td>${data[i].price}</td>
-            <td>${data[i].inbound_unit}</td>
-            <td>${data[i].inbound_unit_count}</td>
+          <tr data-id="${data[i].id}">
+            <td name="id">${data[i].id}</td>
+            <td name="category">${data[i].category}</td>
+            <td name="name">${data[i].name}</td>
+            <td name="cost">${data[i].cost}</td>
+            <td name="price">${data[i].price}</td>
+            <td name="inbount_unit">${data[i].inbound_unit}</td>
+            <td name="inbound_unit_count">${data[i].inbound_unit_count}</td>
             <td><input class="form-check-input" type="checkbox" ${check} disabled>
                 <label class="form-check-label" for="flexCheckDefault">
                   使用

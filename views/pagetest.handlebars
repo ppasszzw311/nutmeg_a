@@ -1,15 +1,4 @@
-<div class="container-md px-5 py-3 border border-4">
-  <div class="row">
-    <div class="col-sm-10">
-      <p class="h2 text-center">進貨</p>
-    </div>
-    <div class="col-sm-2">
-      <a href="/">
-        <button class="btn btn-secondary">返回</button></a>
-    </div>
-  </div>
-  <div class="row d-flex border border-2 rounded">
-    <div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -51,7 +40,7 @@
             <th>進貨量</th>       
           </tr>
         </thead>
-        <tbody id="data-panel-smoke">
+        <tbody id="data-panel-nut">
        <!-- display data here -->
           <tr>
             <td>紅葉</td>
@@ -77,7 +66,7 @@
             <th>進貨量</th>       
           </tr>
         </thead>
-        <tbody id="data-panel-drink">
+        <tbody id="data-panel-nut">
        <!-- display data here -->
           <tr>
             <td>紅葉</td>
@@ -103,7 +92,7 @@
             <th>進貨量</th>       
           </tr>
         </thead>
-        <tbody id="data-panel-other">
+        <tbody id="data-panel-nut">
        <!-- display data here -->
           <tr>
             <td>紅葉</td>
@@ -115,35 +104,3 @@
     </div>
   </div>
 </div>
-    
-      
-      
-  <div class="row d-flex justify-content-center">
-    <button class="btn btn-warning" data-bs-toggle="modal"
-        data-bs-target="#exampleModal" data-checkin="submit">進貨確認</button>
-        
-      </div>
-    </div>
-  </div>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">進貨</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="loginmodal">
-          是否要送出？
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" id="submitcheck">確認送出</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal -->
-</div>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="../js/purchase.js"></script>

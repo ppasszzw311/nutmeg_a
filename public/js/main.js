@@ -20,3 +20,16 @@ function getUserInfo() {
     })
     .catch( (err) => console.log(err))
 }
+
+
+
+let access = localStorage.getItem('token')
+console.log(access)
+
+if ( access !== null) {
+  document.getElementById('loginarea').style.visibility = "visible"
+  document.getElementById('userarea').style.visibility = "visible"
+} else {
+  document.getElementById('loginarea').style.visibility = "hidden"
+  document.getElementById('userarea').style.visibility = "hidden"
+}
