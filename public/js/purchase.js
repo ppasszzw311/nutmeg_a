@@ -138,6 +138,7 @@ submitcheck.addEventListener('click', e => {
     }
     alert("success")
     window.location.href = '/purchase'
+    renderinboundlist()
   }  
 })
 

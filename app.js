@@ -56,6 +56,7 @@ app.get('/api/workshiftDt', api.workshiftDtAll)
 // get category and product
 app.get('/api/getWorkShiftProductInfo/:store_id', api.getWorkShiftProductInfo)
 app.get('/api/getProductName/:store_id/:category', api.getProductName)
+app.get('/api/getProductName/:store_id', api.productNamebyStore)
 // get product by workshift 
 app.get('/api/getNutWorkInfo/:shift_id', api.getNutWorkInfo)
 // get inbound information 

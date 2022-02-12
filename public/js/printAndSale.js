@@ -22,6 +22,8 @@ ShowTime()
 getClassin()
 insertLabelPrint()
 
+
+
 const store_id = localStorage.getItem('store_id')
 let category1 = '檳榔'
 axios.get(`/api/getProductName/${store_id}/${category1}`)
@@ -65,7 +67,6 @@ function renderNutList (data) {
       <tr>
         <td name="${data[i].product_id}">${data[i].name}</td>
         <td name="nut_total" class="total_value">0</td>
-        <td ><input class="form-control" name="nut_give" type="number"></td>
         <td ><input class="form-control" name="nut_sale" type="number"></td>
       </tr>
     `
@@ -88,7 +89,6 @@ function renderSmokeList (data) {
       <tr data-id="${data[i].product_id}">
         <td name="${data[i].name}">${data[i].name}</td>
         <td name="smoke_total" class="total_value">0</td>
-        <td name="smoke_give"><input class="form-control" type="number"></td>
         <td name="smoke_sale"><input class="form-control" type="number"></td>
       </tr>
     `
@@ -103,7 +103,6 @@ function renderDrinkList (data) {
       <tr data-id="${data[i].product_id}">
         <td name="${data[i].name}">${data[i].name}</td>
         <td name="drink_total" class="total_value">0</td>
-        <td ><input class="form-control" name="drink_give" type="number"></td>
         <td ><input class="form-control" name="drink_sale" type="number"></td>
       </tr>
     `

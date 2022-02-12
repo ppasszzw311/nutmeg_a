@@ -11,7 +11,7 @@ const PORT = 3306
 // })
 
 var con = mysql.createConnection({
-  host: "127.0.0.1",
+  host: "130.211.252.183",
   user: "root",
   password: "root",
   database: "bndb"
