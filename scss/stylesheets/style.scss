@@ -1,0 +1,162 @@
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// 4. Include any optional Bootstrap components as you like
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+
+// 5. Add additional custom code here
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $blue-200;
+  font-family: "MicroSoft Jhenghei", sans-serif;
+}
+
+.container-md {
+  background-color: rgba(255, 253, 245, 0.8);
+  min-height: 96vh;
+}
+
+
+// 登入頁面
+#login form{
+  width: 60%;
+}
+#login div {
+  //width: 60%;
+  padding: 2em 1em 0em 0em ;
+  text-align: center;
+  align-items: center;
+}
+
+#login_button button {
+    width: 60%;
+    border: 1px solid tomato;
+  }
+
+
+// 打卡
+#checkinAreaAll button{
+  width: 100%;
+}
+#checkin .card {
+  margin-top: 1em;
+}
+#exampleModal .modal-footer {
+  justify-content: center;
+}
+#exampleModal .modal-footer button {
+  width: 40%;
+}
+
+
+// 進貨
+#purchaseTop button{
+  width: 100%;
+  margin-bottom: 1em;
+}
+#purchaseCenter tbody tr{
+  align-items: center;
+}
+#purchaseCenter .productName{
+  width: 40%;
+}
+#purchaseCenter .productNum{
+  width: 30%;
+}
+#purchaseCenter .productUnit{
+  width: 40%;
+}
+#submitCheck1 {
+  margin-top: 1em;
+  width: 95%;
+  height: 60px;
+  font-size: 1.7em;
+}
+
+// print and sale
+#printBack {
+  width: 100%;
+}
+#printLable {
+  width: 100%;
+  margin-bottom: 3px;
+}
+#fiexd-header{
+  background:#66CCCC; /*背景顏色*/
+  border-radius: 2%;
+  color:#FFFFFF; /*文字顏色*/
+  width:100%; /*寬度*/
+  position:fixed; /*固定位置定位*/
+  bottom: 0; /*距離上方 0 像素*/
+  right: 0;
+  z-index:1; /*重疊時會在其他元素之上*/
+}
+#fiexd-header button{
+  width: 100%;
+  height: 5%;
+  font-size: 2em;
+}
+
+
+#main_title {
+  text-align: center;
+}
+
+[data-checkin="quit"],
+[data-checkin="submit"] {
+  height: 80px;
+  width: 160px;
+  font-size: 3em;
+}
+
+#aassd {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+#aassd label {
+  margin-left: 30px;
+  width: 90px;
+  font-size: 1.1em;
+}
+#aassd select {
+  width: 10em;
+}
+
+#datetime {
+  color: red;
+}
+
+#menu {
+  min-height: 500px;
+}
+
+#number10 {
+  padding: 1em;
+}
+
+#number10 button {
+  height: 3em;
+  width: 30%;
+  margin: 1%;
+  font-size: 24px;
+}

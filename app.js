@@ -1,5 +1,7 @@
 const express = require('express')
 const { engine } = require('express-handlebars')
+const sassMiddleware = require('node-sass-middleware')
+const path = require('path')
 
 const PORT = process.env.PORT || '4400'
 
@@ -17,6 +19,14 @@ app.set('view engine', 'handlebars')
 app.set('views', './views')
 
 // set public filedirect 
+app.use(
+  sassMiddleware({
+    src: path.join(__dirname, 'scss'),
+    dest: path.join(__dirname, 'public'),
+    debug: true,
+    outputStyle: 'compressed',
+  })
+)
 app.use(express.static(__dirname + '/public'))
 
 

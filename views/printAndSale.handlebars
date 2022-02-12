@@ -1,25 +1,25 @@
-<div class="container-md px-3 py-3 border border-2">
+
   <p class="h2 text-center">列印標籤與銷售</p>
-  <div class="row border rounded py-1">
+  <div class="row py-1">
     <div class="col-sm-4">
-      <p class="h5" id="datetime">日期時間:</p>
+      <p class="h5 text-center" id="datetime">日期時間:</p>
     </div>
     <div class="col-sm-2">
-      <p class="h5">值班班別:<span id="class_in"> 早班</span></p>
+      <p class="h5 text-center">值班班別:<span id="class_in"> 早班</span></p>
     </div>
     <div class="col-sm-4 text-end">
-      <p class="h5">員工編號:<span id="workshift"> 23445</span></p>
+      <p class="h5 text-center">員工編號:<span id="workshift"> 23445</span></p>
     </div>
-    <div class="col-sm-2 text-end">
+    <div class="col-sm-2 text-center">
       <a href="/">
-        <button class="btn btn-secondary">返回</button>
+        <button class="btn btn-secondary" id="printBack">返回</button>
       </a>
     </div>
   </div>
-  <div class="row border border-2">
+  <div class="row my-2 d-flex justify-content-center">
     <div class="row">
       <div class="col-sm-9">
-        <p class="h3 text-center">列印標籤</p>
+        <p class="h3 text-center" id="print_summit">列印標籤</p>
       </div>
       <div class="col-sm-2 text-center">
         <button class="btn btn-warning" id="printLable">列印</button>
@@ -62,10 +62,10 @@
       </table>
     </div>
   </div>
-  <div class="row border border-2">
-    <p class="h3">銷售量</p>
+  <div class="row" id="saleArea">
+    <p class="h3 text-center">銷售量</p>
     <div class="row">
-      <div class="col-sm-4 border">
+      <div class="col-sm-4 ">
         <p class="h4 text-center">銷售-檳榔</p>
         <table class="table table-light table-stript table-hover">
           <thead>
@@ -124,6 +124,9 @@
       </a>
     </div>
   </div>
-</div>
+
+  <div id="fiexd-header">
+    <button class="btn">銷售</button>
+  </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="../js/printAndSale.js"></script>

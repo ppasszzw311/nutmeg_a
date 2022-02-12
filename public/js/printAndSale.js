@@ -5,15 +5,53 @@ const nut = document.getElementById('nut')
 const smoke = document.getElementById('smoke')
 const drink = document.getElementById('drink')
 
-drink.addEventListener('change', e => {
-  let name = e.target.name
-  let value = e.target.value
-  localStorage.setItem(name, value)
-  let item_id = e.target.parentElement.parentElement.getAttribute("data-id") // name
+nut.addEventListener('change', e => {
+  let value = parseInt(e.target.value)
+  let item_id = parseInt(e.target.parentElement.parentElement.getAttribute("data-id")) // name
+  let sale_list = JSON.parse(localStorage.getItem('saleList'))
+  sale_list.filter((item) => {
+    if (item.product_id === item_id) {
+      item.sale_value = value
+    }
+  })
+  localStorage.setItem("saleList", JSON.stringify(sale_list))
   let sale = {
     item_id: parseInt(item_id),
-    drink_give : parseInt(localStorage.getItem('drink_give')),
-    drink_sale : parseInt(localStorage.getItem("drink_sale"))
+    drink_sale : parseInt(value)
+  }
+  localStorage.setItem("sale", JSON.stringify(sale))
+})
+
+smoke.addEventListener('change', e => {
+  let value = parseInt(e.target.value)
+  let item_id = parseInt(e.target.parentElement.parentElement.getAttribute("data-id")) // name
+  let sale_list = JSON.parse(localStorage.getItem('saleList'))
+  sale_list.filter((item) => {
+    if (item.product_id === item_id) {
+      item.sale_value = value
+    }
+  })
+  localStorage.setItem("saleList", JSON.stringify(sale_list))
+  let sale = {
+    item_id: parseInt(item_id),
+    drink_sale : parseInt(value)
+  }
+  localStorage.setItem("sale", JSON.stringify(sale))
+})
+
+drink.addEventListener('change', e => {
+  let value = parseInt(e.target.value)
+  let item_id = parseInt(e.target.parentElement.parentElement.getAttribute("data-id")) // name
+  let sale_list = JSON.parse(localStorage.getItem('saleList'))
+  sale_list.filter((item) => {
+    if (item.product_id === item_id) {
+      item.sale_value = value
+    }
+  })
+  localStorage.setItem("saleList", JSON.stringify(sale_list))
+  let sale = {
+    item_id: parseInt(item_id),
+    drink_sale : parseInt(value)
   }
   localStorage.setItem("sale", JSON.stringify(sale))
 })
