@@ -1,6 +1,3 @@
-const { default: axios } = require("axios")
-const { response } = require("express")
-
 
 const nut = document.getElementById("data-panel-nut")
 const smoke = document.getElementById("data-panel-smoke")
@@ -111,4 +108,6 @@ function inbound (category, list) {
     })
     .catch((err) => console.log(err))
 }
+
+
 
