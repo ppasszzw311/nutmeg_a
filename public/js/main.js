@@ -4,8 +4,9 @@ const logout = document.getElementById('logout')
 logout.addEventListener('click', e=> localStorage.clear())
 
 getUserInfo()
+mainLogin()
 
-// get user info 
+// get user info
 function getUserInfo() {
   let token = JSON.parse(localStorage.getItem('token'))
   axios.get(`/api/userInfo/${token}`)
@@ -32,4 +33,13 @@ if ( access !== null) {
 } else {
   document.getElementById('loginarea').style.visibility = "hidden"
   document.getElementById('userarea').style.visibility = "hidden"
+}
+
+
+// 確認登入
+function mainLogin() {
+  const token = localStorage.getItem('token')
+  if (token.length < 10) {
+    window.location.href = "/"
+  }
 }

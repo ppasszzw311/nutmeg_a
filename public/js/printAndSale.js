@@ -5,6 +5,7 @@ const nut = document.getElementById('nut')
 const smoke = document.getElementById('smoke')
 const drink = document.getElementById('drink')
 
+
 nut.addEventListener('change', e => {
   let value = parseInt(e.target.value)
   let item_id = parseInt(e.target.parentElement.parentElement.getAttribute("data-id")) // name
@@ -60,31 +61,77 @@ ShowTime()
 getClassin()
 insertLabelPrint()
 
+salecount()
+renderItemList ()
 
+// 銷售
+function salecount() {
+  const saleRecord = document.getElementById('saleRecord')
+  let sale_list = JSON.parse(localStorage.getItem('saleList')) // 商品列表
+  let sale_Record = localStorage.getItem('saleRecord') // 銷售總數
 
-const store_id = localStorage.getItem('store_id')
-let category1 = '檳榔'
-axios.get(`/api/getProductName/${store_id}/${category1}`)
-  .then((response) => {
-    renderCategory(response.data)
-    console.log(response.data)
-    renderNutList(response.data)
+  saleRecord.addEventListener('click', e => {
+    if (sale_Record.length > 10) {
+      let Record = JSON.parse(localStorage.getItem('saleRecord'))
+      for (i = 0 ; i < sale_list.length ; i ++) {
+        console.log(Record[i].value)
+        // if (Record[i].value === null) {Record[i].value =0}
+        Record.filter((item) => {
+          if (item.product_id === sale_list[i].product_id) {
+            let value = parseInt(item.value)
+            let addvalue =  parseInt(sale_list[i].sale_value)
+            value += addvalue
+            item.value = value
+          }
+        })  
+      }
+      console.log(Record)
+      renderItemList ()
+      localStorage.setItem("saleRecord", JSON.stringify(Record))
+      // makeSaleList(parseInt(localStorage.getItem('store_id'))) // 重設銷售清單
+    } else {
+      let sale = []
+      for (i = 0 ; i < sale_list.length ; i++) {
+        let item = {
+          product_id: sale_list[i].product_id, 
+          value: sale_list[i].sale_value
+        }
+        sale.push(item)
+      }
+      sale_Record = JSON.stringify(sale)
+      makeSaleList(parseInt(localStorage.getItem('store_id')))
+      localStorage.setItem('saleRecord', sale_Record)
+    }
+    alert('輸入完成')
+    // window.location.href = '/printAndSale'
   })
-  .catch((err) => console.log(err))
+}
 
-let category2 = '香菸'
-axios.get(`/api/getProductName/${store_id}/${category2}`)
-  .then((response) => {
-    renderSmokeList(response.data)
-  })
-  .catch((err) => console.log(err))
+function renderItemList () {
+  const store_id = localStorage.getItem('store_id')
+  let category1 = '檳榔'
+  axios.get(`/api/getProductName/${store_id}/${category1}`)
+    .then((response) => {
+      renderCategory(response.data)
+      renderNutList(response.data)
+    })
+    .catch((err) => console.log(err))
 
-let category3 = '飲料'
-axios.get(`/api/getProductName/${store_id}/${category3}`)
-  .then((response) => {
-    renderDrinkList(response.data)
-  })
-  .catch((err) => console.log(err))
+  let category2 = '香菸'
+  axios.get(`/api/getProductName/${store_id}/${category2}`)
+    .then((response) => {
+      renderSmokeList(response.data)
+    })
+    .catch((err) => console.log(err))
+
+  let category3 = '飲料'
+  axios.get(`/api/getProductName/${store_id}/${category3}`)
+    .then((response) => {
+      renderDrinkList(response.data)
+    })
+    .catch((err) => console.log(err))
+}
+
 
 
 function renderCategory(data) {
@@ -137,14 +184,34 @@ function renderSmokeList (data) {
 function renderDrinkList (data) {
   list = ''
   for( i = 0; i < data.length; i++) {
-    let row = `
-      <tr data-id="${data[i].product_id}">
-        <td name="${data[i].name}">${data[i].name}</td>
-        <td name="drink_total" class="total_value">0</td>
-        <td ><input class="form-control" name="drink_sale" type="number"></td>
-      </tr>
-    `
-    list += row
+    const countList = JSON.parse(localStorage.getItem('saleList'))
+    const saleList = JSON.parse(localStorage.getItem('saleRecord'))
+    let id = data[i].product_id
+    for (j = 0; j < countList.length; j++) {
+      if (countList[j].product_id === id) {
+        let saleadd = countList[j].sale_value
+        let salehave = saleList[j].value
+        if (!saleadd) {saleadd = 0} 
+        if (!salehave) {salehave =0}
+        
+        let row = `
+        <tr data-id="${data[i].product_id}">
+          <td name="${data[i].name}">${data[i].name}</td>
+          <td name="drink_total" class="total_value">${salehave}</td>
+          <td ><input class="form-control" name="drink_sale" type="number" value=${saleadd}></td>
+        </tr>
+        `
+        list += row
+      } 
+    }
+    // let row = `
+    //   <tr data-id="${data[i].product_id}">
+    //     <td name="${data[i].name}">${data[i].name}</td>
+    //     <td name="drink_total" class="total_value">0</td>
+    //     <td ><input class="form-control" name="drink_sale" type="number"></td>
+    //   </tr>
+    // `
+    // list += row
   }
   drink.innerHTML = list
 }
@@ -222,3 +289,21 @@ function insertLabelPrint() { // 列印標籤
   localStorage.removeItem('label_total')
   localStorage.removeItem('label_boken')
 }
+
+
+// add sale list 
+function makeSaleList(store) {
+  let sale_list = []
+  axios.get(`/api/getProductName/${store}`)
+    .then((response) => {
+      let datalist = response.data
+      for (i = 0; i < datalist.length; i++) {
+        datalist[i].sale_value = 0
+        sale_list.push(datalist[i])
+        localStorage.setItem("saleList", JSON.stringify(sale_list))
+      }
+    })
+    .catch((err) => console.log(err))
+}
+
+
