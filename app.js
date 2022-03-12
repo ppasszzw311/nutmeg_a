@@ -3,6 +3,8 @@ const { engine } = require('express-handlebars')
 const sassMiddleware = require('node-sass-middleware')
 const path = require('path')
 
+
+
 const PORT = process.env.PORT || '4400'
 
 const app = express()
@@ -49,6 +51,7 @@ app.get('/backend/itemData', menu.itemData)
 app.get('/backend/errorfix', menu.errorfix)
 app.get('/backend/record', menu.record)
 app.get('/testcss', menu.pagetest)
+app.get('/test/a', menu.test)
 
 
 // get all 
@@ -63,28 +66,50 @@ app.get('/api/workshift', api.workshiftAll)
 app.get('/api/workshiftDt', api.workshiftDtAll)
 
 
-// get category and product
-app.get('/api/getWorkShiftProductInfo/:store_id', api.getWorkShiftProductInfo)
-app.get('/api/getProductName/:store_id/:category', api.getProductName)
-app.get('/api/getProductName/:store_id', api.productNamebyStore)
-// get product by workshift 
-app.get('/api/getNutWorkInfo/:shift_id', api.getNutWorkInfo)
-// get inbound information 
-app.get('/api/getInboundInfo/:shift_id', api.getInboundInfo)
-
 // post
-app.post('/api/clockInAndOut', api.clockInAndOut)
-app.post('/api/insertLabelPrint', api.insertLabelPrint)
-app.post('/api/inserWorkShift', api.inserWorkShift)
-app.post('/api/inserWorkShiftDt', api.inserWorkShiftDt)
+app.get('/testPDF', api.testPDF)
+
+
+
 app.post('/api/addproduct', api.addProduct)
 app.post('/api/login', api.login)
-app.post('/api/inbound', api.inbound)
-app.post('/api/updateInBoundStock', api.updateInBoundStock)
 
 //get user info
 app.get('/api/userInfo/:token', api.userInfo)
 
+//// from api doc by ming
+// 01 workshift number now
+app.get('/api/getCurrentWorkShiftId/:store_id', api.getCurrentWorkShiftId)
+// 02 check in 
+app.post('/api/clockInAndOut', api.clockInAndOut)
+// 03 get product name 
+app.get('/api/getProductName/:store_id/:category', api.getProductName)
+app.get('/api/getProductName/:store_id', api.productNamebyStore)
+// 03.1 get ingre Name
+app.get('/api/getIngreName/:store_id', api.getIngreName)
+// 04 instert a label
+app.post('/api/insertLabelPrint', api.insertLabelPrint)
+// 04.1 update stock
+app.put('/api/updateStock', api.updateStock)
+// 05 get category and product
+app.get('/api/getProductInfo/:store_id', api.getProductInfo)
+// 06 get product by workshift 
+app.get('/api/getNutWorkInfo/:shift_id', api.getNutWorkInfo)
+// 07 get inbound information 
+app.get('/api/getInboundInfo/:shift_id', api.getInboundInfo)
+// 08 insert work shift infomation
+app.post('/api/inserWorkShift', api.inserWorkShift)
+// 09 insert work shift detail
+app.post('/api/inserWorkShiftDt', api.inserWorkShiftDt)
+// 10 clock out 與02重複
+// 11 in bound
+app.post('/api/inbound', api.inbound)
+// 11.1 updata in bound stock
+app.post('/api/updateInBoundStock', api.updateInBoundStock)
+// 12 get store
+app.get('/api/getStore/:vendor_id', api.getStore)
+// 13 get category
+app.get('/api/getCategory/store_id', api.getCategory)
 
 // 自訂404
 app.use(menu.notFound)

@@ -9,6 +9,12 @@ submit.addEventListener('click', (e) =>{
 })
 
 
+import {fn} from "test";
+//import { fn } from 'node-html-parser';
+parse = require('test');
+console.log(parse)
+
+
 function getLoginInfo () {
   const form = document.getElementById('login')
   const id = form[0].value
@@ -45,6 +51,7 @@ function getStoreInfo(token) {
     .then( (response) => {
       let store_id = response.data.store_id
       sale_list(store_id)
+      productList(store_id)
     })
     .catch( (err) => console.log(err))
 }
@@ -64,13 +71,29 @@ function sale_list(store) {
     .then((response) => {
       let datalist = response.data
       for (i = 0; i < datalist.length; i++) {
-        sale_list.push(datalist[i])
+        let productItem = {
+          product_id: datalist[i].product_id,
+          category: datalist[i].category,
+          p_name: datalist[i].name,
+          sale_temp_count: 0,
+          sale_sum: 0
+        }
+        sale_list.push(productItem)
         localStorage.setItem("saleList", JSON.stringify(sale_list))
       }
     })
     .catch((err) => console.log(err))
 }
 
+function productList(store) {
+  let item_list = []
+  axios.get('/api/product')
+    .then((response) => {
+      let datalist = response.data
+      datalist = datalist.filter(item => item.store_id === parseInt(store))
+      localStorage.setItem("productList", JSON.stringify(datalist)) 
+    })
+}
 
 
 

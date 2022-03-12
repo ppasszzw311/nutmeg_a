@@ -1,5 +1,6 @@
 // node 
 const itemList = document.getElementById('checkUse')
+
 const store = document.getElementById('store')
 const store1 = document.getElementById('store1')
 const addvalue = document.getElementById('addvalue')
@@ -10,13 +11,24 @@ add_new.addEventListener('change', e => {
   let value = e.target.value
   localStorage.setItem(name, value)
 })
+
+
 // 點擊更改
 itemList.addEventListener('click', e=> {
   let target = e.target
   let value = target.innerHTML
-  if (value.length < 20) {
-    target.innerHTML = `<input class="form-control" type="text" value="${value}">`
-    console.log(value)
+  if (value === '編輯') {
+    let editevent = target.parentElement.parentElement
+    let product_id = target.parentElement.parentElement.dataset.id
+    let category = target.parentElement.parentElement.children[1].innerHTML  
+    let name = target.parentElement.parentElement.children[2].innerHTML
+    let cost = target.parentElement.parentElement.children[3].innerHTML 
+    let price = target.parentElement.parentElement.children[4].innerHTML
+    let unit = target.parentElement.parentElement.children[5].innerHTML
+    let inbound_unit_count = target.parentElement.parentElement.children[6].innerHTML
+    let use_yn = target.parentElement.parentElement.children[7].innerHTML         
+    console.log(target.parentElement.parentElement.children[7].innerHTML ) // disable 還沒做
+    // target.innerHTML = `<input class="form-control" type="text" value="${value}">`
   }
 })
 
@@ -69,6 +81,7 @@ axios.get('/api/store')
 axios.get('/api/product')
   .then( (response) => {
     let data = response.data
+    localStorage.setItem('itemData', JSON.stringify(data))
     let body =``
     let check = ''
     for(i = 0; i < data.length; i++) {
@@ -88,11 +101,12 @@ axios.get('/api/product')
                   使用
                 </label>
             </td>
+            <td class="edit" name="edit"><button class="btn btn-primary">編輯</button></td>  
           </tr>
         `
         body += rowdata 
       } else {
-        check = ' '
+        check = 'disabled'
         let rowdata = `
           <tr data-id="${data[i].id}">
             <td name="id">${data[i].id}</td>
@@ -107,6 +121,7 @@ axios.get('/api/product')
                   使用
                 </label>
             </td>
+            <td class"edit" name="edit"><button class="btn btn-primary">編輯</button></td>  
           </tr>
         `
         body += rowdata 

@@ -22,11 +22,11 @@
         <p class="h3 text-center" id="print_summit">列印標籤</p>
       </div>
       <div class="col-sm-2 text-center">
-        <button class="btn btn-warning" id="printLable">列印</button>
+        <button class="btn btn-warning" id="printLabel">列印</button>
       </div>
     </div>
     <div class="row">
-      <table class="table table-light table-stript table-hover text-center">
+      <table id="labelprint" class="table table-light table-stript table-hover text-center">
         <thead>
           <tr>
             <th>原料</th>
@@ -37,26 +37,16 @@
           </tr>
           <tr id="label_num">
             <td>
-              <select name="catory" class="form-select" id="ingreCatory">
-                <option value="1">紅葉</option>
-                <option value="2">少棒</option>
-                <option value="3">安安</option>
-                <option value="4">好喔</option>
-                <option value="5">ＯＫ！</option>
+              <select name="incatory" class="form-select" id="ingreCatory" required>
               </select>
             </td>
             <td>
-              <select name="catory" class="form-select" id="nutCatory">
-                <option value="1">紅葉</option>
-                <option value="2">少棒</option>
-                <option value="3">安安</option>
-                <option value="4">好喔</option>
-                <option value="5">ＯＫ！</option>
+              <select name="nucatory" class="form-select" id="nutCatory" required>
               </select>
             </td>
-            <td><input class="form-control" type="number"></td>
-            <td><input class="form-control" type="number"></td>
-            <td><input class="form-control" type="number"></td>
+            <td><input id="package" class="form-control" type="number" required></td>
+            <td><input id="piece" class="form-control" type="number" required></td>
+            <td><input id="broken" class="form-control" type="number" required></td>
           </tr>
         </thead>
       </table>
@@ -79,7 +69,7 @@
           </tbody>
         </table>
       </div>
-      <div class="col-sm-4 border">
+      <div class="col-sm-4">
         <p class="h4 text-center">銷售-香菸</p>
         <table class="table table-light table-stript table-hover">
           <thead>
@@ -94,7 +84,7 @@
           </tbody>
         </table>
       </div>
-      <div class="col-sm-4 border">
+      <div class="col-sm-4">
         <p class="h4 text-center">銷售-飲料</p>
         <table class="table table-light table-stript table-hover">
           <thead>
@@ -111,19 +101,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-6 d-flex justify-content-center">
-      <a href="/checkout">
-        <button class="btn btn-warning">交班</button>
-      </a>
 
-    </div>
-    <div class="col-sm-6 d-flex justify-content-center">
-      <a href="/checkin">
-        <button class="btn btn-success">打卡</button>
-      </a>
-    </div>
-  </div>
 
   <div id="fiexd-header">
     <button class="btn" id="saleRecord">銷售</button>

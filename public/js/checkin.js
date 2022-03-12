@@ -1,3 +1,4 @@
+
 const number = document.querySelector('#number10')
 const dateTime = document.querySelector('#datetime')
 const id = document.querySelector('#id_input')
@@ -22,10 +23,13 @@ submitCheck.addEventListener('click', e => {
     .then( ( response) => {
       let checkin = response.data[0].shift_id
       localStorage.setItem('workshiftId', checkin)
+
       window.location.href = '/'
     })
     .catch( (err) => console.log(err))
 })
+
+
 
 // show now
 function ShowTime() {
