@@ -2,12 +2,13 @@
 const nutRes = document.getElementById("data-panel-nutRes")
 const smoke = document.getElementById("data-panel-smoke")
 const drink = document.getElementById('data-panel-drink')
+const other = document.getElementById('data-panel-other')
 renderinboundlist()
 
 function renderinboundlist() {
   const store_id = localStorage.getItem('store_id')
-  const category = ['檳榔原料','香菸','飲料']
-  for ( i = 0; i < 3; i++) {
+  const category = ['檳榔原料','香菸','飲料', '百貨']
+  for ( i = 0; i < 4; i++) {
     let cat = category[i] 
     axios.get(`/api/getProductName/${store_id}/${category[i]}`)
       .then((response) => {
@@ -17,6 +18,9 @@ function renderinboundlist() {
         } else if (cat === '香菸') {
           smoke.innerHTML = renderList(response.data)
           localStorage.setItem('smokelist', JSON.stringify(response.data))
+        } else if (cat === '百貨'){
+          other.innerHTML = renderList(response.data)
+          localStorage.setItem('otherlist', JSON.stringify(response.data))
         } else {
           drink.innerHTML = renderList(response.data)
           localStorage.setItem('drinklist', JSON.stringify(response.data))
@@ -56,6 +60,22 @@ smoke.addEventListener('change', e => {
     }
   })
   localStorage.setItem('smokelist', JSON.stringify(smoke_list))
+})
+
+// 百貨部分
+other.addEventListener('change', e => {
+  let other_list = localStorage.getItem('otherlist')
+  other_list = JSON.parse(other_list)
+  const changeItem = {
+    id: parseInt(e.target.parentElement.parentElement.getAttribute("data-id")),
+    value: parseInt(e.target.value)
+  }
+  other_list.filter((item) => {
+    if (item.product_id === changeItem.id) {
+      item.inbound = changeItem.value
+    }
+  })
+  localStorage.setItem('otherlist', JSON.stringify(other_list))
 })
 
 // 飲料部分
@@ -175,6 +195,16 @@ function purchaseinfo() {
       inbound_item.push(drink_info[i])
       let item = `<p><strong>飲料_${drink_info[i].name}</strong> : ${inbound_n} ${drink_info[i].inbound_unit}</p>`
       info +=  item
+    }
+  }
+  let other_info = JSON.parse(localStorage.getItem('otherlist'))
+  for (i = 0; i < other_info.length; i++) {
+    let inbound_n = other_info[i].inbound
+    if (inbound_n > 0) {
+      other_info[i].category = "百貨"
+      inbound_item.push(other_info[i])
+      let item = `<p><strong>百貨_${other_info[i].name}</strong> : ${inbound_n} ${other_info[i].inbound_unit}</p>`
+      info += item
     }
   }
   inbound_info.innerHTML = info

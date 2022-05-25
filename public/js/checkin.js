@@ -24,7 +24,7 @@ submitCheck.addEventListener('click', e => {
       let checkin = response.data[0].shift_id
       localStorage.setItem('workshiftId', checkin)
 
-      window.location.href = '/'
+      window.location.href = '/home'
     })
     .catch( (err) => console.log(err))
 })

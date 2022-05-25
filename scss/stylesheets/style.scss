@@ -20,70 +20,195 @@
 
 // 5. Add additional custom code here
 
+* {
+  padding: 0;
+  margin: 0;
+
+}
+
 body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $blue-200;
   font-family: "MicroSoft Jhenghei", sans-serif;
 }
 
-.container-md {
+.container1 {
   background-color: rgba(255, 253, 245, 0.8);
-  min-height: 96vh;
+  min-height: 100vh;
+  min-width: 100vw;
 }
+
+.container1 h1 {
+  padding-top: 1.5rem;
+}
+
+.container1 .info {
+  display: flex;
+  padding: 0 2rem 0 0;
+  justify-content: right;
+  align-items: baseline;
+}
+
+.container1 .info #logout {
+  margin-left: 0.45rem;
+  height: 30px;
+  width: 60px;
+  background-color: #0a8d8d;
+  color: #FFFFFF;
+  text-decoration: none;
+  border: 1px solid #6c757d;
+  border-radius: 2px;
+  text-align: center;
+  padding: 0 0.25em;
+}
+
 
 
 // 登入頁面
-#login form{
-  width: 60%;
+.loginform {
+  width: 100vw;
+  padding: 2rem;
 }
-#login div {
-  //width: 60%;
-  padding: 2em 1em 0em 0em ;
+
+.loginform .card {
+  background-color: white;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.loginform div {
   text-align: center;
   align-items: center;
 }
 
-#login_button button {
-    width: 60%;
-    border: 1px solid tomato;
-  }
+.loginform input {
+  width: 250px;
+  height: 50px;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.loginform button {
+  display: flex;
+  color: #FFFFFF;
+  font-size: 2rem;
+  background-color: #20c997;
+  width: 120px;
+  height: 50px;
+  border: 1px #6c757d;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 // 打卡
-#checkinAreaAll button{
+.checkininfo {
+  padding: 0.5rem;
+}
+
+.checkininfo .back {
+  display: flex;
+  color: #6c757d;
+}
+
+.checkininfo .backa {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.checkininfo form {
+  padding: 1rem;
+  background-color: #ffffff;
+}
+
+.checkininfo .button_area {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.checkininfo .button_area a {
+  background-color: rgb(207, 5, 5);
+  font-size: 3rem;
+  text-decoration: none;
+  color: #FFFFFF;
+  text-align: center;
+  align-items: center;
+  width: 160px;
+  padding: 0;
+  border-radius: 0.25rem;
+}
+
+
+#checkinAreaAll button {
   width: 100%;
 }
+
 #checkin .card {
   margin-top: 1em;
 }
+
 #exampleModal .modal-footer {
   justify-content: center;
 }
+
 #exampleModal .modal-footer button {
   width: 40%;
 }
 
 
 // 進貨
-#purchaseTop button{
-  width: 100%;
-  margin-bottom: 1em;
+.purchase {
+  padding: 0 1.5rem 0 0;
+  box-sizing: content-box;
+
 }
-#purchaseCenter tbody tr{
-  align-items: center;
+
+.purchase .back {
+  display: flex;
+  color: #6c757d;
 }
-#purchaseCenter .productName{
-  width: 40%;
+
+.purchase .backa {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #6c757d;
 }
-#purchaseCenter .productNum{
-  width: 30%;
+
+.purchase .accordion-item {
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 0.25rem;
 }
-#purchaseCenter .productUnit{
-  width: 40%;
+
+.purchase .accordion-item .accordion-collapse {
+  padding: 0;
 }
+
+.purchase .accordion-item .accordion-button {
+  padding: 0.5rem 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.purchase .accordion-body {
+  padding: 0;
+}
+
+.purchase .accordion-body td {
+  padding: 0.25rem;
+}
+
+.purchase .accordion-body input {
+  padding: 0.25rem;
+}
+
+
 #submitCheck1 {
   margin-top: 1em;
   width: 95%;
@@ -91,25 +216,199 @@ body {
   font-size: 1.7em;
 }
 
+
+// 打卡查詢
+.checkinList {
+  padding: 0.5rem;
+}
+
+.checkinList .back {
+  display: flex;
+  color: #6c757d;
+}
+
+.checkinList .backa {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.checkinList .filterlist {
+  padding: 0 0 1rem 0;
+}
+
+.checkinList .filterlist .timeClass {
+  display: flex;
+  // width: 100vw;
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  align-items: center;
+}
+
+.checkinList .filterlist .timeClass p {
+  width: 5rem;
+}
+
+.checkinList .filterlist input {
+  width: 8rem;
+}
+
+.checkinList .filterlist .dateClass {
+  display: flex;
+  width: 100vw;
+  padding: 0.5rem;
+  align-items: center;
+}
+
+.checkinList .filterlist .dateClass p {
+  width: 4rem;
+}
+
+.checkinList .filterlist .dateClass input {
+  width: 8rem;
+}
+
+.checkinList table th {
+  padding: 0.3rem 0.1rem;
+  text-align: center;
+  align-items: center;
+}
+
+.checkinList table td {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.1rem;
+  text-align: center;
+  align-items: center;
+}
+
+
 // print and sale
+.printAndSale {
+  padding: 0.5rem;
+}
+
+.printAndSale .back {
+  display: flex;
+  color: #6c757d;
+}
+
+.printAndSale .backa {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.printAndSale p {
+  margin: 0;
+}
+
+.printAndSale .infobox {
+  padding: 0.5rem;
+}
+
+.printAndSale .infobox .class_id {
+  display: flex;
+}
+
+.printAndSale .infobox .class_id p {
+  padding-right: 0.5rem;
+}
+
+.printAndSale .print {
+  background-color: #aeebf7;
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0;
+}
+
+.printAndSale .print .tablerow {
+  display: flex;
+  height: 2.5rem;
+  padding: 2px 3px;
+  background-color: #f0f2f3;
+  margin: 1px;
+}
+
+.printAndSale .print .tablerow label {
+  width: 35px;
+  margin-left: 0.5rem;
+  text-align: center;
+  align-items: center;
+}
+
+.printAndSale .print .tablerow input {
+  width: 60px;
+  padding: 3px;
+}
+
+.printAndSale .print table td {
+  padding: 0.25rem;
+}
+
+.printAndSale .print #printLabel {
+  width: 100vw;
+  padding: 0 0.25rem;
+  margin-top: 1rem;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.printAndSale .print #printLabel a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.5rem;
+}
+
+.printAndSale .sale {
+  background-color: #83f9ce;
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  margin-bottom: 4rem;
+}
+
+.printAndSale .sale .nutSale {
+  padding: 0.25rem;
+  background: #FFFFFF;
+}
+
+.printAndSale .sale .smokeSale {
+  padding: 0.25rem;
+  background: #FFFFFF;
+}
+
+.printAndSale .sale .drinkSale {
+  padding: 0.25rem;
+  background: #FFFFFF;
+}
+
 #printBack {
   width: 100%;
 }
+
 #printLable {
   width: 100%;
   margin-bottom: 3px;
 }
-#fiexd-header{
-  background:#66CCCC; /*背景顏色*/
+
+#fiexd-header {
+  background: #83f9ce;
+  /*背景顏色*/
   border-radius: 2%;
-  color:#FFFFFF; /*文字顏色*/
-  width:100%; /*寬度*/
-  position:fixed; /*固定位置定位*/
-  bottom: 0; /*距離上方 0 像素*/
+  color: #FFFFFF;
+  /*文字顏色*/
+  width: 100%;
+  /*寬度*/
+  position: fixed;
+  /*固定位置定位*/
+  bottom: 0;
+  /*距離上方 0 像素*/
   right: 0;
-  z-index:1; /*重疊時會在其他元素之上*/
+  z-index: 1;
+  /*重疊時會在其他元素之上*/
 }
-#fiexd-header button{
+
+#fiexd-header button {
   width: 100%;
   height: 5%;
   font-size: 2em;
@@ -138,16 +437,14 @@ body {
   width: 90px;
   font-size: 1.1em;
 }
+
 #aassd select {
   width: 10em;
 }
 
-#datetime {
-  color: red;
-}
 
 #menu {
-  min-height: 500px;
+  height: 100%;
 }
 
 #number10 {
@@ -159,4 +456,118 @@ body {
   width: 30%;
   margin: 1%;
   font-size: 24px;
+}
+
+// main menu button 
+.menu-button {
+  //border: 1px solid tomato;
+  border-radius: 3px;
+  box-shadow: 1.5px 1.5px 0 rgba(80, 80, 80, 0.268);
+  background-color: #0a8d8d;
+  color: #FFFFFF;
+  width: 75%;
+  margin: 2px 2px 2px 2px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0.4em;
+  padding: 0.3em;
+}
+
+.menu-button h1 {
+  padding: 1px 1px 1px 1px;
+  margin: 2px 2px 2px 2px;
+}
+
+// main menu text
+.datetime-text {
+  padding: 0rem 0.6rem 0rem 0.6rem;
+  color: red;
+  margin-top: 10px;
+}
+
+#classname {
+  padding: 0rem 0.6rem 0rem 0.6rem;
+}
+
+// hover
+#menu a:hover {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #0a8d8d;
+  ;
+
+
+}
+
+
+// 交班
+.workshift {
+  padding: 0.5rem;
+}
+
+.workshift .back {
+  display: flex;
+  color: #6c757d;
+}
+
+.workshift .backa {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.workshift p {
+  margin: 0;
+}
+
+.workshift .infobox {
+  padding: 0.5rem;
+}
+
+.workshift .infobox .class_id {
+  display: flex;
+}
+
+.workshift .infobox .class_id p {
+  padding-right: 0.5rem;
+}
+
+.workshift .workshiftList {
+  width: 370px;
+  box-sizing: border-box;
+}
+
+.workshift .accordion-item {
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 0.25rem;
+}
+
+.workshift .accordion-item .accordion-collapse {
+  padding: 0;
+}
+
+.workshift .accordion-item .accordion-button {
+  padding: 0.5rem 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.workshift .accordion-body {
+  padding: 0;
+}
+
+.workshift .accordion-body td {
+  padding: 0.25rem;
+}
+
+.workshift .accordion-body input {
+  padding: 0.25rem;
+}
+
+// 打卡紀錄
+
+.pagechange {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
 }

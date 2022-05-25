@@ -1,22 +1,22 @@
-<form id="login" class="row was-validated" action="/login" method="get">
-  <p class="h3 text-center">登入</p>
-  <div class="mb-3 pt-3">
-    <label class="form-label">帳號／手機</label>
-    <input type="text" class="form-control" id="loginid" name="idnum" required>
-  </div>
-  <div class="mb-3 pt-3">
-    <label for="form-label">密碼</label>
-    <input type="password" class="form-control" id="loginpassword" name="password" required>
-  </div>
-  <div class="row d-flex justift-content-center" id="login_button">
-    <div class="col-sm-6 text-center">
-      <button class="btn btn-primary" type="submit" id="login-button">登入</button>
+<div class="loginform">
+  <form id="login" class="row was-validated" action="/login" method="get">
+    <div class="card">
+      <p class="h3 text-center">登入</p>
+      <div class="mb-1 pt-3">
+        <label class="form-label">帳號／手機</label>
+        <input type="text" class="form-control" id="loginid" name="idnum" required>
+      </div>
+      <div class="mb-1 pt-1">
+        <label for="form-label">密碼</label>
+        <input type="password" class="form-control" id="loginpassword" name="password" required>
+      </div>
+      <button class="login_button" type="submit" id="login-button">登入</button>
+  
     </div>
-    <div class="col-md-6 text-center">
-      <a href="/register">註冊</a>
-    </div>
-  </div>
-</form>
+  
+  </form>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="module" src="./js/test.js"></script>

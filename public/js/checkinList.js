@@ -6,24 +6,26 @@ const endDate = document.getElementById("endDate")
 
 // data
 const checkinList = []
+const filteredList = checkinList
 
-sel_name.addEventListener('change', e => {
-  const class_ca = e.target.value 
-  let filteredList = []
-  console.log(class_ca.length)
-  if (class_ca.length >= 3) {
-    filteredList = checkinList
-    makList(filteredList)
-  } else {
-    filteredList = checkinList.filter((item) => item.class.includes(class_ca)) 
-    makList(filteredList)
-  }
-})
+// sel_name.addEventListener('change', e => {
+//   const class_ca = e.target.value 
+//   let filteredList = []
+//   console.log(class_ca.length)
+//   if (class_ca.length >= 3) {
+//     filteredList = checkinList
+//     makList(filteredList)
+//   } else {
+//     filteredList = checkinList.filter((item) => item.class.includes(class_ca)) 
+//     makList(filteredList)
+//   }
+// })
+
+filter()
 
 function filter() {
   const sel_name = document.getElementById("sel_name")
-  
-  let filteredList = []
+  let filteredList = checkinList
   let filteredkey = {
     class: '',
     start: '',
@@ -35,13 +37,20 @@ function filter() {
   const class_ca = e.target.value 
   console.log(class_ca.length)
   if (class_ca.length >= 3) {
-    filteredList = checkinList
+    filteredList = filteredList
   } else {
-    filteredList = checkinList.filter((item) => item.class.includes(class_ca)) 
+    filteredList = filteredList.filter((item) => item.class.includes(class_ca)) 
   }
   makList(filteredList)
 })
 }
+
+
+
+// 分頁
+
+
+// time
 startDate.addEventListener('change', e => {
   const date_ca = e.target.value
   console.log(Date.parse(date_ca))

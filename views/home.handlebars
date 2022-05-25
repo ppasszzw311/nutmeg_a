@@ -1,44 +1,54 @@
 <div class="row d-flex">
   <div class="col-sm-8">
-    <p class="h3" id="datetime">現在</p>
+    <p class="datetime-text" id="datetime">現在</p>
   </div>
   <div class="col-sm-4">
-    <p class="h3" id="classname">值班班別</p>
+    <p id="classname">值班班別</p>
   </div>
-  
+
 </div>
+
+
+{{!--
+<script> // 程式碼家這裡
+  ///window.webkit.messageHandlers.NativeMethod.postMessage("就是一个消息啊");
+  //alert("hello")
+</script> --}}
 
 
 <div class="row" id="menu">
   <div class="col-sm-4 d-flex justify-content-center align-items-center">
-    <a href="/checkin" style="text-decoration:none;">
+    <a href="/checkin" class="menu-button">
       <p class="h1">打卡</p>
     </a>
   </div>
   <div class="col-sm-4 d-flex justify-content-center align-items-center">
-    <a href="/workshift" style="text-decoration:none;">
+    <a href="/workshift" class="menu-button">
       <p class="h1">交班</p>
     </a>
   </div>
   <div class="col-sm-4 d-flex justify-content-center align-items-center">
-    <a href="printAndSale" style="text-decoration:none;">
+    <a href="printAndSale" class="menu-button">
       <p class="h1">列印標籤與銷售</p>
     </a>
   </div>
   <div class="col-sm-4 d-flex justify-content-center align-items-center">
-    <a href="checkinList" style="text-decoration:none;">
+    <a href="checkinList" class="menu-button">
       <p class="h1">打卡記錄查詢</p>
     </a>
   </div>
   <div class="col-sm-4 d-flex justify-content-center align-items-center">
-    <a href="purchase" style="text-decoration:none;">
+    <a href="purchase" class="menu-button">
       <p class="h1">進貨</p>
     </a>
   </div>
   <div class="col-sm-4 d-flex justify-content-center align-items-center">
-    <a href="backend/manager" style="text-decoration:none;">
+    <a href="backend/manager" class="menu-button">
       <p class="h1">老闆管理</p>
     </a>
   </div>
 </div>
+
+
 <script src="../js/showtime.js"></script>
+<script src="../js/getsalelist.js"></script>

@@ -1,106 +1,100 @@
-
+<div class="printAndSale">
+  <div class="back">
+    <a class="backa" href="/home">
+      <i class="fa-solid fa-delete-left fa-2xl"></i>
+    </a>&nbsp;
+    <p>返回</p>
+  </div>
   <p class="h2 text-center">列印標籤與銷售</p>
-  <div class="row py-1">
-    <div class="col-sm-4">
-      <p class="h5 text-center" id="datetime">日期時間:</p>
+  <div class="infobox">
+    <div class="nowtime">
+      <p id="datetime">日期時間:</p>
     </div>
-    <div class="col-sm-2">
-      <p class="h5 text-center">值班班別:<span id="class_in"> 早班</span></p>
-    </div>
-    <div class="col-sm-4 text-end">
-      <p class="h5 text-center">員工編號:<span id="workshift"> 23445</span></p>
-    </div>
-    <div class="col-sm-2 text-center">
-      <a href="/">
-        <button class="btn btn-secondary" id="printBack">返回</button>
-      </a>
+    <div class="class_id">
+      <p>值班班別:<span id="class_in"> 早班</span></p>
+      <p>員工編號:<span id="workshift"> 23445</span></p>
     </div>
   </div>
-  <div class="row my-2 d-flex justify-content-center">
-    <div class="row">
-      <div class="col-sm-9">
-        <p class="h3 text-center" id="print_summit">列印標籤</p>
+  <div class="print">
+    <p class="h3 text-center">列印標籤</p>
+    <div class="row d-flex">
+      <div class="d-flex col-6">
+        <label for="">原料</label>
+        <select name="incatory" class="form-select" id="ingreCatory" required>
+        </select>
       </div>
-      <div class="col-sm-2 text-center">
-        <button class="btn btn-warning" id="printLabel">列印</button>
+      <div class="d-flex col-6">
+        <label for="">品名</label>
+        <select name="nucatory" class="form-select" id="nutCatory" required>
+        </select>
       </div>
     </div>
-    <div class="row">
-      <table id="labelprint" class="table table-light table-stript table-hover text-center">
+    <div class="tablerow">
+      <label>包數</label>
+      <input id="package" type="number" required>
+      <label>顆數</label>
+      <input id="piece"  type="number" required>
+      <label>毀損</label>
+      <input id="broken" type="number" required>
+    </div>
+
+
+    <div id="printLabel">
+      <a href="#">列印</a>
+    </div>
+
+    
+  </div>
+  <div class="sale">
+    <p class="h3 text-center">銷售量</p>
+    <div class="nutSale">
+      <p class="h4">銷售-檳榔</p>
+      <table class="table table-light table-stript table-hover">
         <thead>
-          <tr>
-            <th>原料</th>
-            <th>品名</th>
-            <th>包數</th>
-            <th>顆數</th>
-            <th>毀損</th>
-          </tr>
-          <tr id="label_num">
-            <td>
-              <select name="incatory" class="form-select" id="ingreCatory" required>
-              </select>
-            </td>
-            <td>
-              <select name="nucatory" class="form-select" id="nutCatory" required>
-              </select>
-            </td>
-            <td><input id="package" class="form-control" type="number" required></td>
-            <td><input id="piece" class="form-control" type="number" required></td>
-            <td><input id="broken" class="form-control" type="number" required></td>
+          <tr class="text-center">
+            <th>名稱</th>
+            <th>總銷售</th>
+            <th>售量</th>
           </tr>
         </thead>
+        <tbody id="nut">
+        </tbody>
       </table>
     </div>
-  </div>
-  <div class="row" id="saleArea">
-    <p class="h3 text-center">銷售量</p>
-    <div class="row">
-      <div class="col-sm-4 ">
-        <p class="h4 text-center">銷售-檳榔</p>
-        <table class="table table-light table-stript table-hover">
-          <thead>
-            <tr class="text-center">
-              <th>名稱</th>
-              <th>總銷售</th>
-              <th>售量</th>
-            </tr>
-          </thead>
-          <tbody id="nut">
-          </tbody>
-        </table>
-      </div>
-      <div class="col-sm-4">
-        <p class="h4 text-center">銷售-香菸</p>
-        <table class="table table-light table-stript table-hover">
-          <thead>
-            <tr class="text-center">
-              <th>名稱</th>
-              <th>總銷售</th>
-              <th>售量</th>
-            </tr>
-          </thead>
-          <tbody id="smoke">
-
-          </tbody>
-        </table>
-      </div>
-      <div class="col-sm-4">
-        <p class="h4 text-center">銷售-飲料</p>
-        <table class="table table-light table-stript table-hover">
-          <thead>
-            <tr class="text-center">
-              <th>名稱</th>
-              <th>總銷售</th>
-              <th>售量</th>
-            </tr>
-          </thead>
-          <tbody id="drink">
-
-          </tbody>
-        </table>
-      </div>
+    <div class="smokeSale">
+      <p class="h4">銷售-香菸</p>
+      <table class="table table-light table-stript table-hover">
+        <thead>
+          <tr class="text-center">
+            <th>名稱</th>
+            <th>總銷售</th>
+            <th>售量</th>
+          </tr>
+        </thead>
+        <tbody id="smoke">
+      
+        </tbody>
+      </table>
     </div>
-  </div>
+    <div class="drinkSale">
+      <p class="h4">銷售-飲料</p>
+      <table class="table table-light table-stript table-hover">
+        <thead>
+          <tr class="text-center">
+            <th>名稱</th>
+            <th>總銷售</th>
+            <th>售量</th>
+          </tr>
+        </thead>
+        <tbody id="drink">
+      
+        </tbody>
+    </div>
+    <div class="otherSale">
+
+    </div>
+    
+</div>
 
 
   <div id="fiexd-header">

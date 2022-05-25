@@ -9,10 +9,7 @@ submit.addEventListener('click', (e) =>{
 })
 
 
-import {fn} from "test";
-//import { fn } from 'node-html-parser';
-parse = require('test');
-console.log(parse)
+
 
 
 function getLoginInfo () {
@@ -60,7 +57,7 @@ function getStoreInfo(token) {
 function checktoken(token) {
   if (token.length !== 0) {
     alert('成功登入')
-    window.location.href = '/' 
+    window.location.href = '/home' 
   }
 }
 

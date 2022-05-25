@@ -7,6 +7,8 @@ const nut = document.getElementById('nut')
 const smoke = document.getElementById('smoke')
 const drink = document.getElementById('drink')
 
+const storeId1 = localStorage.getItem('store_id')
+
 
 nut.addEventListener('change', e => {
   let value = parseInt(e.target.value)
@@ -50,13 +52,43 @@ getClassin()
 insertLabelPrint()
 
 salecount()
-renderItemList ()
+sale_list(storeId1)
+productList(storeId1)
+renderItemList()
+
+
+
+// function
+
+// add sale list 
+
+
+
+function sale_list(store) {
+  let sale_list = []
+  axios.get(`/api/getProductName/${store}`)
+    .then((response) => {
+      let datalist = response.data
+      for (i = 0; i < datalist.length; i++) {
+        let productItem = {
+          product_id: datalist[i].product_id,
+          category: datalist[i].category,
+          p_name: datalist[i].name,
+          sale_temp_count: 0,
+          sale_sum: 0
+        }
+        sale_list.push(productItem)
+        localStorage.setItem("saleList", JSON.stringify(sale_list))
+      }
+    })
+    .catch((err) => console.log(err))
+}
 
 // 銷售
 function salecount() {
   saleRecord.addEventListener('click', e => {
     let sale_list = JSON.parse(localStorage.getItem('saleList'))
-    for (i = 0 ; i < sale_list.length; i++ ) {
+    for (i = 0; i < sale_list.length; i++) {
       sale_list[i].sale_sum = sale_list[i].sale_sum + sale_list[i].sale_temp_count
       sale_list[i].sale_temp_count = 0
     }
@@ -66,7 +98,7 @@ function salecount() {
   })
 }
 
-function renderItemList () {
+function renderItemList() {
   const sale_list = JSON.parse(localStorage.getItem('saleList'))
 
   const nutList = []
@@ -75,7 +107,7 @@ function renderItemList () {
   for (i = 0; i < sale_list.length; i++) {
     if (sale_list[i].category === "檳榔") {
       nutList.push(sale_list[i])
-    } else if ( sale_list[i].category === "香菸") {
+    } else if (sale_list[i].category === "香菸") {
       smokeList.push(sale_list[i])
     } else if (sale_list[i].category === "飲料") {
       drinkList.push(sale_list[i])
@@ -104,7 +136,7 @@ function selector() {
 
 function renderCategory(data, targetr) {
   list = '<option disabled selected value> 請選擇 </option>'
-  for( i = 0; i < data.length; i++) {
+  for (i = 0; i < data.length; i++) {
     let row = `
       <option data-id="${data[i].product_id}" value="${data[i].product_id}">${data[i].name}</option>
     `
@@ -114,9 +146,9 @@ function renderCategory(data, targetr) {
 }
 
 
-function renderNutList (data) {
+function renderNutList(data) {
   list = ''
-  for( i = 0; i < data.length; i++) {
+  for (i = 0; i < data.length; i++) {
     let row = `
       <tr data-id="${data[i].product_id}">
         <td name="${data[i].product_id}">${data[i].p_name}</td>
@@ -132,9 +164,9 @@ function renderNutList (data) {
 
 
 
-function renderSmokeList (data) {
+function renderSmokeList(data) {
   list = ''
-  for( i = 0; i < data.length; i++) {
+  for (i = 0; i < data.length; i++) {
     let row = `
       <tr data-id="${data[i].product_id}">
         <td name="${data[i].p_name}">${data[i].p_name}</td>
@@ -146,7 +178,7 @@ function renderSmokeList (data) {
   }
   smoke.innerHTML = list
 }
-function renderDrinkList (data) {
+function renderDrinkList(data) {
   list = ''
   for (i = 0; i < data.length; i++) {
     let row = `
@@ -164,7 +196,7 @@ function renderDrinkList (data) {
 function ShowTime() {
   let NowDate = new Date()
   let Y = NowDate.getFullYear()
-  let M = zeroTen(NowDate.getMonth()+1) 
+  let M = zeroTen(NowDate.getMonth() + 1)
   let D = zeroTen(NowDate.getDate())
   let h = zeroTen(NowDate.getHours())
   let m = zeroTen(NowDate.getMinutes())
@@ -190,27 +222,28 @@ function getClassin() {
   let workShiftID = localStorage.getItem('workshiftId')
   class_in.innerText = nowClass
   workshift.innerText = workShiftID
-} 
+}
 
 function insertLabelPrint() { // 列印標籤
   const printLable = document.getElementById('printLabel')
 
-  printLable.addEventListener('click', e =>{
+  printLable.addEventListener('click', e => {
     const nutCatory1 = document.getElementById('nutCatory')
     const ingreCatory1 = document.getElementById('ingreCatory')
     const package1 = document.getElementById('package')
     const piece = document.getElementById('piece')
     const broken = document.getElementById('broken')
-    
+
+
     // 驗證用
     console.log(
       getProductinfo(4),
       ingreCatory1.validity.valueMissing,
-      nutCatory1.value, // 取直
-      ingreCatory1.value , 
-      nutCatory1.innerText, 
-      nutCatory1.validity.valueMissing, 
-      package1.checkValidity()) 
+      nutCatory1.value, // 檳榔品名取直
+      ingreCatory1.value, // 檳榔原料取直
+      nutCatory1.innerText,
+      nutCatory1.validity.valueMissing,
+      package1.checkValidity())
 
     // 讀資料
     let nut_id = parseInt(nutCatory1.value)
@@ -220,17 +253,18 @@ function insertLabelPrint() { // 列印標籤
     let labelData = {
       product_id: nut_id,
       product_name: nutinfo.name,
+      inger_name: ingerinfo.name,
       store_id: parseInt(localStorage.getItem('store_id')),
       class: nutinfo.category,
       user_id: parseInt(localStorage.getItem('user_id')),
       user: localStorage.getItem('Name'),
       package: parseInt(package1.value),
       piece: parseInt(piece.value),
-      total: parseInt(package1.value) * parseInt(nutinfo.unit_count)+ parseInt(piece.value),
+      total: parseInt(package1.value) * parseInt(nutinfo.unit_count) + parseInt(piece.value),
       broken: parseInt(broken.value),
       shift_id: localStorage.getItem('workshiftId')
     }
-    const label_value ={
+    const label_value = {
       nut_id: labelData.product_id,
       nut_name: labelData.product_name,
       nut_package: labelData.package,
@@ -242,34 +276,42 @@ function insertLabelPrint() { // 列印標籤
       inger_total: labelData.total + labelData.broken // 消耗量
     }
     const label_list = localStorage.getItem('labelList')
-    if (label_list === null) {
-      const new_label_list = []
-      new_label_list.push(label_value)
-      localStorage.setItem("labelList", JSON.stringify(new_label_list))
-    } else {
-      const new_label_list = JSON.parse(localStorage.getItem('labelList'))
-      new_label_list.push(label_value)
-      localStorage.setItem("labelList", JSON.stringify(new_label_list))
-    }
+    // if (label_list === null) {
+    //   const new_label_list = []
+    //   new_label_list.push(label_value)
+    //   localStorage.setItem("labelList", JSON.stringify(new_label_list))
+    // } else {
+    //   const new_label_list = JSON.parse(localStorage.getItem('labelList'))
+    //   new_label_list.push(label_value)
+    //   localStorage.setItem("labelList", JSON.stringify(new_label_list))
+    // }
 
     axios.post('/api/insertLabelPrint', {
-      product_id : labelData.product_id,
+      product_id: labelData.product_id,
       product_name: labelData.product_name,
       store_id: labelData.store_id,
       class: labelData.class,
       user_id: labelData.user_id,
       user: labelData.user,
-      package: labelData.package, 
+      package: labelData.package,
       piece: labelData.piece,
       total: labelData.total,
       broken: labelData.broken,
       shift_id: labelData.shift_id
     })
-      .then ((response) => {
+      .then((response) => {
         console.log(response.data)
       })
       .catch((err) => console.log(err))
-
+    const print_text = {
+      inger_name: labelData.inger_name,
+      nut_name: labelData.product_name,
+      package: labelData.package,
+      piece: labelData.piece
+    }
+    let textlabel = print_text.inger_name + "," + print_text.nut_name + "," + print_text.package + "," + print_text.piece
+    window.webkit.messageHandlers.NativeMethod.postMessage(textlabel);
+    alert("hello")
   })
 }
 // 取商品資訊
@@ -295,3 +337,12 @@ function makeSaleList(store) {
 }
 
 
+function productList(store) {
+  let item_list = []
+  axios.get('/api/product')
+    .then((response) => {
+      let datalist = response.data
+      datalist = datalist.filter(item => item.store_id === parseInt(store))
+      localStorage.setItem("productList", JSON.stringify(datalist))
+    })
+}

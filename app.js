@@ -37,8 +37,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // page
-app.get('/', menu.home) // home
+app.get('/', menu.start) // home
 app.get('/login', menu.login) // login
+app.get('/home', menu.home) // main
 app.get('/checkin' ,menu.checkin) // checkin
 app.get('/workshift', menu.workshift) // work shift
 app.get('/printAndSale', menu.printAndSale)
@@ -50,8 +51,13 @@ app.get('/backend/monlyReport', menu.monlyReport)
 app.get('/backend/itemData', menu.itemData)
 app.get('/backend/errorfix', menu.errorfix)
 app.get('/backend/record', menu.record)
+
+// test 
 app.get('/testcss', menu.pagetest)
 app.get('/test/a', menu.test)
+app.get('/test', menu.testwork)
+app.get('/pagetest', menu.pp)
+
 
 
 // get all 
@@ -110,6 +116,35 @@ app.post('/api/updateInBoundStock', api.updateInBoundStock)
 app.get('/api/getStore/:vendor_id', api.getStore)
 // 13 get category
 app.get('/api/getCategory/store_id', api.getCategory)
+// 14 get all product stock
+app.get('/api/getAllProductStock/:store_id', api.getAllProductStock)
+// 15 get specific category stock
+app.get('/api/getSpecificCategoryStock/:store_id/:category', api.getSpecificCategoryStock)
+// 16 get all sale amount
+app.get('/api/getAllSaleAmount/:vender_id/:start_time/:end_time', api.getAllSaleAmount)
+// 17 get store sale amount
+app.get('/api/getStoreSaleAmount/:store_id/:start_time/:end_time', api.getStoreSaleAmount)
+// 18 get all sale order
+app.get('/api/getAllSaleOrder/:vender_id/:start_time/:end_time', api.getAllSaleOrder)
+// 19 get store sale order
+app.get('/api/getStoreSaleOrder/:store_id/:start_time/:end_time', api.getStoreSaleOrder)
+// 20 get all check out 
+app.get('/api/getAllCheckOut/:vender_id/:year/:month', api.getAllCheckOut)
+// 21 get store check out
+app.get('/api/getStoreCheckOut/:store_id/:year/:month', api.getStoreCheckOut)
+// 22 insert monthly cost
+app.post('/api/insertMonthlyCost', api.insertMonthlyCost)
+// 23 update monthly cost
+app.post('/api/updateMonthlyCost', api.updateMonthlyCost)
+// 24 get product list
+app.get('/api/getProductList/:store_id', api.getProductList)
+// 25 insert product list
+app.post('/api/insertProductList', api.insertProductList)
+// 26 update product list
+app.post('/api/updateProductList', api.updateProductList)
+// 27 delete Product List 
+app.post('/api/deleteProductList', api.deleteProductList)
+
 
 // 自訂404
 app.use(menu.notFound)
