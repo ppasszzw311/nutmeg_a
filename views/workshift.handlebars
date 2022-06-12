@@ -41,7 +41,7 @@
               </thead>
               <tbody class="" id="nutDatapanel">
               </tbody>
-    
+
               </tr>
             </table>
           </div>
@@ -49,8 +49,8 @@
       </div>
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-            aria-expanded="false" aria-controls="collapseTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
             香菸
           </button>
         </h2>
@@ -77,8 +77,8 @@
       </div>
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-            aria-expanded="false" aria-controls="collapseThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
             飲料
           </button>
         </h2>
@@ -105,8 +105,8 @@
       </div>
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingFour">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-            aria-expanded="false" aria-controls="collapseFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
             其他
           </button>
         </h2>
@@ -133,48 +133,61 @@
         </div>
       </div>
     </div>
-        
+
+  </div>
+  <div class="col-md-3 ">
+    <div class="p-4 m-2" id="money">
+      <p class="h6 text-center">總金額：<span>7,746</span></p>
+      <p class="h6 text-center">檳榔：<span>7,746</span></p>
+      <p class="h6 text-center">香菸：<span>7,746</span></p>
+      <p class="h6 text-center">飲料：<span>7,746</span></p>
+      <p class="h6 text-center">其它：<span>7,746</span></p>
+    </div>
+    <div class="workShiftMember">
+      <p class="h5 text-center">值班人: <span class="h6"><input class="form-control" type="text"></span></p>
+      <p class="h5 text-center">接班人: <span class="h6"><input class="form-control" type="text"></span></p>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#CheckList">
+          請確認交班
+        </button>
+        <a href="/home">
+          <button class="btn btn-secondary">關閉</button>
+        </a>
       </div>
-      <div class="col-md-3 ">
-        <div class="p-4 m-2" id="money">
-          <p class="h6 text-center">總金額：<span>7,746</span></p>
-          <p class="h6 text-center">檳榔：<span>7,746</span></p>
-          <p class="h6 text-center">香菸：<span>7,746</span></p>
-          <p class="h6 text-center">飲料：<span>7,746</span></p>
-          <p class="h6 text-center">其它：<span>7,746</span></p>
+    </div>
+  </div>
+
+  <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="CheckList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">請確認您的交班明細</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    
-    
-    
-        <p class="h5 text-center">值班人: <span class="h6"><input class="form-control" type="text"></span></p>
-        <p class="h5 text-center">接班人: <span class="h6"><input class="form-control" type="text"></span></p>
-        <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#CheckList">
-            請確認交班
-          </button>
-          <a href="/home">
-            <button class="btn btn-secondary">關閉</button>
-          </a>
+        <div class="modal-dialog modal-dialog-scrollable" id="checkWorkshift">
+          <div class="row">
+            <p>班次：<span>早班</span></p>
+            <p>工作編號：<span>264765375</span></p>
+            <p>值班人：<span>ＡＡ</span></p>
+            <p>接班人：<span>ＡＡ</span></p>
+          </div>
+          <div class="row">
+            <p>檳榔銷售金額：<span>135</span>元</p>
+            <p>香菸銷售金額：<span>135</span>元</p>
+            <p>飲料銷售金額：<span>135</span>元</p>
+            <p>其他銷售金額：<span>135</span>元</p>
+            <p><strong>總金額：<span>135</span>元</strong> </p>
+            <p><strong>交班金額：<span>135</span>元</strong> </p>
+            <p><strong>短缺金額：<span>135</span>元</strong> </p>
+          </div>
         </div>
-      </div>
-      
-      <!-- Button trigger modal -->
-      
-      
-      <!-- Modal -->
-      <div class="modal fade" id="CheckList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">請確認您的交班明細</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-dialog modal-dialog-scrollable">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">返回</button>
-              <button type="button" class="btn btn-primary" id="workshiftcheck"">確認送出</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">返回</button>
+          <button type="button" class="btn btn-primary" id="workshiftcheck"">確認送出</button>
             </div>
           </div>
         </div>
@@ -187,8 +200,5 @@
  
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="../js/workshift.js"></script>
-
-
-
+<script src=" https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script src="../js/workshift.js"></script>

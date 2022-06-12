@@ -56,7 +56,7 @@ sale_list(storeId1)
 productList(storeId1)
 renderItemList()
 
-
+getNutWorkInfo()
 
 // function
 
@@ -64,25 +64,6 @@ renderItemList()
 
 
 
-function sale_list(store) {
-  let sale_list = []
-  axios.get(`/api/getProductName/${store}`)
-    .then((response) => {
-      let datalist = response.data
-      for (i = 0; i < datalist.length; i++) {
-        let productItem = {
-          product_id: datalist[i].product_id,
-          category: datalist[i].category,
-          p_name: datalist[i].name,
-          sale_temp_count: 0,
-          sale_sum: 0
-        }
-        sale_list.push(productItem)
-        localStorage.setItem("saleList", JSON.stringify(sale_list))
-      }
-    })
-    .catch((err) => console.log(err))
-}
 
 // 銷售
 function salecount() {
@@ -321,15 +302,65 @@ function getProductinfo(id) {
   return result[0]
 }
 
-// add sale list 
-function makeSaleList(store) {
+// 取得檳榔工作資料
+function getNutWorkInfo() {
+  let workshiftID = localStorage.getItem('workshiftId')
+  let printlist = []
+  axios.get(`/api/getNutWorkInfo/${workshiftID}`)
+    .then((response) => {
+      let product = JSON.parse(localStorage.getItem('productList'))
+      let workitem = response.data
+      localStorage.setItem('printList', JSON.stringify(workitem))
+      let workitemid = []
+      for (i = 0; i < workitem.length; i++) {
+        let a = String(workitem[i].product_id)
+        workitemid.push(a)
+        console.log(workitemid)
+      }
+      product.forEach(item => {
+        let id = item.id
+        console.log(id)
+        if (id.toString().includes(workitemid)) {
+          let work = {
+            id: item.id,
+            package: workitem[i].package,
+            piece: parseInt(workitem[i].total / item.unit_count),
+            total: workitem[i].total
+          }
+          printlist.push(work)
+        } else {
+          let work = {
+            id: item.id,
+            package: 0,
+            piece: 0,
+            total: 0
+          }
+          printlist.push(work)
+        }
+      })
+      localStorage.setItem('printlist', JSON.stringify(printlist))
+    })
+    .catch((err) => console.log(err))
+}
+
+function sale_list(store) {
   let sale_list = []
   axios.get(`/api/getProductName/${store}`)
     .then((response) => {
       let datalist = response.data
       for (i = 0; i < datalist.length; i++) {
-        datalist[i].sale_value = 0
-        sale_list.push(datalist[i])
+        let productItem = {
+          product_id: datalist[i].product_id,
+          category: datalist[i].category,
+          p_name: datalist[i].name,
+          price: datalist[i].price,
+          stock: datalist[i].stock,
+          inbound_unit_count: datalist[i].inbound_unit_count,
+          inbound: 0,
+          sale_temp_count: 0,
+          sale_sum: 0
+        }
+        sale_list.push(productItem)
         localStorage.setItem("saleList", JSON.stringify(sale_list))
       }
     })
