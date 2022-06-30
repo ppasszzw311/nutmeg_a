@@ -24,11 +24,14 @@
     "mysql": "^2.18.1",
     "noble": "^1.9.1",
     "node-gyp": "^9.0.0",
-    "node-sass-middleware": "^0.11.0",
+    "node-sass-middleware": "^1.0.1",
     "node-web-bluetooth": "^1.2.1",
-    "nodemon": "^2.0.15",
     "pdfkit": "^0.13.0",
     "react-native-xprinter": "^0.1.2",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "save-dev": "^0.0.1-security",
+    "tar": "^6.1.11",
     "tp-react-native-bluetooth-printer": "^1.0.1"
   }
 }
