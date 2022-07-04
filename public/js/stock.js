@@ -2,15 +2,18 @@
 // const node 
 const dataPanel = document.getElementById("datapanel")
 const store = document.getElementById("store")
+const category = document.getElementById("category")
 
 
 // get data 
 let datalist = []
+let filterList = []
 const store_id = localStorage.getItem("store_id")
 axios.get(`/api/getAllProductStock/${store_id}`)
   .then((response) => {
     datalist = response.data
     renderList(datalist)
+    filterList = datalist
   })
 axios.get(`/api/getStore/${store_id}`)
   .then((response) => {
@@ -28,6 +31,28 @@ axios.get(`/api/getStore/${store_id}`)
 store.addEventListener('change', e => {
   let target = e.target.value
   console.log(target)
+  if ( !target ) {
+    renderList(filterList)
+    console.log(filterList)
+  } else {
+    filterList = filterList.filter((item) => item.name.includes(target))
+    renderList(filterList)
+    console.log(filterList)
+  }
+
+  /// 問題待解決（原本的api並沒有抓店名的id)
+})
+
+category.addEventListener("change", e => {
+  let target = e.target.value 
+  if (!target) {
+    filterList = datalist
+    renderList(filterList)
+  } else {
+    filterList = datalist
+    filterList = filterList.filter((item) => item.category.toString().includes(target.toString()))
+    renderList(filterList)
+  }
 })
 
 

@@ -1,0 +1,50 @@
+<div class="row text-center">
+  <p class="h3 text-center">創建帳號</p>
+  <form id="createForm" action="/createMember" method="get">
+    <div class="row justify-content-center">
+      <div class="d-flex col-md-3 py-2">
+        <label  style="width: 7rem; align-items-center" for="">帳號：</label>
+        <input class="form-control" type="text" name="user_id" placeholder="請填寫帳號">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="d-flex col-md-3 py-2">
+        <label style="width: 7rem; align-items-center" for="">密碼：</label>
+        <input class="form-control" type="password" name="user_id" placeholder="請填寫密碼">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="d-flex col-md-3 py-2">
+        <label style="width: 7rem; align-items-center" for="">密碼確認：</label>
+        <input class="form-control" type="password" name="user_id" placeholder="請在填寫一次密碼">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="d-flex col-md-3 py-2">
+        <label style="width: 7rem; align-items-center" for="">姓名：</label>
+        <input class="form-control" type="text" name="user_id" placeholder="請輸入姓名">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="d-flex col-md-3 py-2">
+        <label style="width: 7rem; align-items-center" for="">電話：</label>
+        <input class="form-control" type="tel" name="user_id" placeholder="請輸入聯絡電話">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="d-flex col-md-3 py-2">
+        <label style="width: 7rem; align-items-center" for="">地址：</label>
+        <input class="form-control" type="text" name="user_id" placeholder="請輸入地址">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="d-flex col-md-3 justify-content-center p-3">
+        <button class="btn btn-success" id="submit">確認送出</button>
+        <a href="" class="btn btn-light">返回取消</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../js/createMember.js"></script>

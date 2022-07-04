@@ -38,6 +38,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // page
 app.get('/', menu.start) // home
+app.get('/createMember', menu.createMember)
 app.get('/login', menu.login) // login
 app.get('/home', menu.home) // main
 app.get('/checkin' ,menu.checkin) // checkin
@@ -144,6 +145,8 @@ app.post('/api/insertProductList', api.insertProductList)
 app.post('/api/updateProductList', api.updateProductList)
 // 27 delete Product List 
 app.post('/api/deleteProductList', api.deleteProductList)
+
+app.post('/api/createMember', api.createMember)
 
 
 // 自訂404
