@@ -1,3 +1,4 @@
+
 // node 
 const itemList = document.getElementById('checkUse')
 
@@ -26,8 +27,29 @@ itemList.addEventListener('click', e=> {
     let price = target.parentElement.parentElement.children[4].innerHTML
     let unit = target.parentElement.parentElement.children[5].innerHTML
     let inbound_unit_count = target.parentElement.parentElement.children[6].innerHTML
-    let use_yn = target.parentElement.parentElement.children[7].innerHTML         
-    console.log(target.parentElement.parentElement.children[7].innerHTML ) // disable 還沒做
+    let use_yn = target.parentElement.parentElement.children[7].children[0].checked // 有無確認
+    let editData = {
+      product_id: product_id,
+      name: name,
+      category: category,
+      cost: cost,
+      price: price,
+      unit: unit,
+      inbound_unit_count: inbound_unit_count,
+      use_yn: use_yn
+    }
+    let editName = `<input class="form-control" type="text" name="name" value="${editData.name}">`
+    let editCost = `<input class="form-control" type="number" name="cost" value="${editData.cost}">`
+    let editPrice = `<input class="form-control" type="number" name="price" value="${editData.price}">`
+    let editUnit = `<input class="form-control" type="text" name="unit" value="${editData.unit}">`
+    let editUnitCount = `<input class="form-control" type="number" name="cost" value="${editData.inbound_unit_count}">`
+    target.parentElement.parentElement.children[2].innerHTML = editName
+    target.parentElement.parentElement.children[3].innerHTML = editCost
+    target.parentElement.parentElement.children[4].innerHTML = editPrice
+    target.parentElement.parentElement.children[5].innerHTML = editUnit
+    target.parentElement.parentElement.children[6].innerHTML = editUnitCount
+    console.log(use_yn, product_id, category, name, cost ,price, unit,inbound_unit_count)      
+    // disable 還沒做
     // target.innerHTML = `<input class="form-control" type="text" value="${value}">`
   }
 })
@@ -96,7 +118,7 @@ axios.get('/api/product')
             <td name="price">${data[i].price}</td>
             <td name="inbount_unit">${data[i].inbound_unit}</td>
             <td name="inbound_unit_count">${data[i].inbound_unit_count}</td>
-            <td><input class="form-check-input" type="checkbox" ${check} >
+            <td><input class="form-check-input" type="checkbox" ${check} disabled>
                 <label class="form-check-label" for="flexCheckDefault">
                   使用
                 </label>
