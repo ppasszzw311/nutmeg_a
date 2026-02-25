@@ -8,22 +8,22 @@ const addvalue = document.getElementById('addvalue')
 
 const add_new = document.getElementById('add_new')
 add_new.addEventListener('change', e => {
-  let name = e.target.name 
+  let name = e.target.name
   let value = e.target.value
   localStorage.setItem(name, value)
 })
 
 
 // 點擊更改
-itemList.addEventListener('click', e=> {
+itemList.addEventListener('click', e => {
   let target = e.target
   let value = target.innerHTML
   if (value === '編輯') {
     let editevent = target.parentElement.parentElement
     let product_id = target.parentElement.parentElement.dataset.id
-    let category = target.parentElement.parentElement.children[1].innerHTML  
+    let category = target.parentElement.parentElement.children[1].innerHTML
     let name = target.parentElement.parentElement.children[2].innerHTML
-    let cost = target.parentElement.parentElement.children[3].innerHTML 
+    let cost = target.parentElement.parentElement.children[3].innerHTML
     let price = target.parentElement.parentElement.children[4].innerHTML
     let unit = target.parentElement.parentElement.children[5].innerHTML
     let inbound_unit_count = target.parentElement.parentElement.children[6].innerHTML
@@ -48,7 +48,7 @@ itemList.addEventListener('click', e=> {
     target.parentElement.parentElement.children[4].innerHTML = editPrice
     target.parentElement.parentElement.children[5].innerHTML = editUnit
     target.parentElement.parentElement.children[6].innerHTML = editUnitCount
-    console.log(use_yn, product_id, category, name, cost ,price, unit,inbound_unit_count)      
+    console.log(use_yn, product_id, category, name, cost, price, unit, inbound_unit_count)
     // disable 還沒做
     // target.innerHTML = `<input class="form-control" type="text" value="${value}">`
   }
@@ -75,7 +75,7 @@ addvalue.addEventListener('click', e => {
       localStorage.removeItem('unit')
       localStorage.removeItem('unit_count')
 
-      window.location.href = '/backend/itemData'
+      window.location.href = '/itemData'
     })
     .catch((err) => console.log(err))
 })
@@ -84,7 +84,7 @@ const storeList = []
 
 function renderStoreList(list) {
   let stores = ''
-  list.map( (item) => {
+  list.map((item) => {
     let storeOne = `<option value="${item.id}">${item.name}</option>`
     stores += storeOne
   })
@@ -101,13 +101,13 @@ axios.get('/api/store')
   .catch((err) => console.log(err))
 
 axios.get('/api/product')
-  .then( (response) => {
+  .then((response) => {
     let data = response.data
     localStorage.setItem('itemData', JSON.stringify(data))
-    let body =``
+    let body = ``
     let check = ''
-    for(i = 0; i < data.length; i++) {
-      if( data[i].use_yn === 1) {
+    for (i = 0; i < data.length; i++) {
+      if (data[i].use_yn === 1) {
         check = 'checked'
         let rowdata = `
           <tr data-id="${data[i].id}">
@@ -126,7 +126,7 @@ axios.get('/api/product')
             <td class="edit" name="edit"><button class="btn btn-primary">編輯</button></td>  
           </tr>
         `
-        body += rowdata 
+        body += rowdata
       } else {
         check = 'disabled'
         let rowdata = `
@@ -146,9 +146,9 @@ axios.get('/api/product')
             <td class"edit" name="edit"><button class="btn btn-primary">編輯</button></td>  
           </tr>
         `
-        body += rowdata 
+        body += rowdata
       }
-    itemList.innerHTML = body  
+      itemList.innerHTML = body
     }
   })
-  .catch( (err) => console.log(err))
+  .catch((err) => console.log(err))

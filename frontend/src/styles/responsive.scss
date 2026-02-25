@@ -1,0 +1,53 @@
+// Responsive Design Variables
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 992px;
+
+// Mixins
+@mixin mobile {
+    @media (max-width: #{$breakpoint-mobile}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: #{$breakpoint-tablet}) {
+        @content;
+    }
+}
+
+// Responsive Utilities
+.mobile-hide {
+    @include mobile {
+        display: none !important;
+    }
+}
+
+.tablet-stack {
+    @include tablet {
+        flex-direction: column !important;
+
+        >* {
+            width: 100% !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+.responsive-table {
+    @include mobile {
+        font-size: 0.85rem;
+
+        th,
+        td {
+            padding: 0.25rem !important;
+        }
+    }
+}
+
+.full-width-mobile {
+    @include mobile {
+        width: 100% !important;
+    }
+}

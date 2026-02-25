@@ -1,6 +1,5 @@
 const express = require('express')
 const { engine } = require('express-handlebars')
-const sassMiddleware = require('node-sass-middleware')
 const path = require('path')
 
 
@@ -10,54 +9,15 @@ const PORT = process.env.PORT || '4400'
 const app = express()
 app.set('port', PORT)
 
-// main js
-const menu = require('./lib/handlers')
 // set api
 const api = require('./lib/api')
-
-// set engine
-app.engine('handlebars', engine ({extname:'.hbs', defultLayous: 'main', }))
-app.set('view engine', 'handlebars')
-app.set('views', './views')
-
-// set public filedirect 
-app.use(
-  sassMiddleware({
-    src: path.join(__dirname, 'scss'),
-    dest: path.join(__dirname, 'public'),
-    debug: true,
-    outputStyle: 'compressed',
-  })
-)
-app.use(express.static(__dirname + '/public'))
 
 
 // db
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// page
-app.get('/', menu.start) // home
-app.get('/createMember', menu.createMember)
-app.get('/login', menu.login) // login
-app.get('/home', menu.home) // main
-app.get('/checkin' ,menu.checkin) // checkin
-app.get('/workshift', menu.workshift) // work shift
-app.get('/printAndSale', menu.printAndSale)
-app.get('/checkinList', menu.checkinList)
-app.get('/purchase', menu.purchase)
-app.get('/backend/manager', menu.manager)
-app.get('/backend/saleRank', menu.saleRank)
-app.get('/backend/monlyReport', menu.monlyReport)
-app.get('/backend/itemData', menu.itemData)
-app.get('/backend/errorfix', menu.errorfix)
-app.get('/backend/record', menu.record)
 
-// test 
-app.get('/testcss', menu.pagetest)
-app.get('/test/a', menu.test)
-app.get('/test', menu.testwork)
-app.get('/pagetest', menu.pp)
 
 
 
@@ -149,13 +109,50 @@ app.post('/api/deleteProductList', api.deleteProductList)
 app.post('/api/createMember', api.createMember)
 
 
-// 自訂404
-app.use(menu.notFound)
+const fs = require('fs');
 
-// 自訂500 網頁
-app.use(menu.serverError)
+// Serve React static pages
+const frontendDistPath = path.join(__dirname, 'frontend/dist');
+if (fs.existsSync(frontendDistPath)) {
+  app.use(express.static(frontendDistPath));
+}
 
-if(require.main === module) {
+// Check api routes first
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ error: "API route not found" });
+});
+
+// Catch-all for React Router routes
+app.get('*', (req, res) => {
+  const indexPath = path.join(frontendDistPath, 'index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(200).send("Frontend build not found. Please run 'npm run build' in the frontend directory, or use the Vite dev server.");
+  }
+});
+
+// Generic error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+    res.status(500).json({ error: "Internal Server Error" });
+  } else {
+    res.status(500).redirect('/server-error');
+  }
+});
+
+// Catch-all for React Router routes
+app.get('*', (req, res) => {
+  const indexPath = path.join(frontendDistPath, 'index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(200).send("Frontend build not found. Please run 'npm run build' in the frontend directory, or use the Vite dev server.");
+  }
+});
+
+if (require.main === module) {
   app.listen(PORT, () => console.log(`
   Express started on http://localhost:${PORT}; `
   ))
